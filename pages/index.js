@@ -6,7 +6,7 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>got bugs?</title>
+        <title>got bugs</title>
         <meta name="description" content="got bugs?" />
         <link rel="icon" href="/question-mark.svg" />
       </Head>
