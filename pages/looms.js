@@ -24,7 +24,7 @@ function Loom({ id }) {
   );
 }
 
-export default function () {
+export default function Looms() {
   return (
     <div>
       <div
