@@ -10,10 +10,8 @@ function Loom({ id }) {
     >
       <iframe
         src={`https://www.loom.com/embed/${id}`}
-        frameborder="0"
         webkitallowfullscreen
         mozallowfullscreen
-        allowfullscreen
         style={{
           position: "absolute",
           top: 0,
