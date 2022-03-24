@@ -42,6 +42,7 @@ export default function Looms() {
         <Loom id="51f3c8bf662b4cc3bdc59bcada0272ad" />
         <Loom id="cdb30ba6ac7d44a4a61fd500227b3277" />
         <Loom id="f6809c7bc0114d30afdf6219249e7944" />
+        <Loom title="Netlify Dashboard" id="20e13d5be6b0451bab296622382343c1" />
         <Loom title="Remix Jokes" id="b7094e68de274e0390d4930c742cc98e" />
         <Loom title="Remix Demo" id="059d3d0770db447a8287c05bf269b476" />
         <Loom
