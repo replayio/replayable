@@ -1,10 +1,58 @@
+import styles from "../styles/Issues.module.css";
+import Image from 'next/image'
+
+function IssueData({title, number, date, author, url, labels}) {
+    const formattedDate = new Date(date).toLocaleDateString()
+    return (
+        <div className={styles.issue}>
+            <Image
+        className={styles.avatar}
+        src={author.avatarUrl}
+        alt="Picture of the author"
+        height={40}
+        width={40}
+      />
+      <div className={styles.data}>
+<a href={url} target="_blank"><span>{title}</span></a>
+<div className={styles.muted}><span>Issue #{number}</span> <span>Created on {formattedDate}</span> <span>by <a href={author.url} target="_blank">{author.name}</a></span></div>
+</div>
+<div className={styles.labels}>
+{labels.map((label) => (
+// We could pull the actual label color in with style={{backgroundColor:'#' + label.node.color}}
+// GitHub uses a lightness switch calculation to determine what font color to use based on the label color
+// For now will just use a single color for all labels
+    <span >{label.node.name}</span>
+))}
+</div>
+        </div>
+        
+    )
+}
+
+function IssueRow({issue}) {
+    return (
+<div className={styles.row}>
+<IssueData title={issue.title} date={issue.createdAt} author={issue.author} number={issue.number} url={issue.url} labels={issue.labels.edges} />
+</div>
+    )
+}
+function IssueSummary({issues}) {
+    return (
+        <div className={styles.row}>
+            <span style={{fontWeight: 'bold'}}>{issues.length} open issues</span>
+        </div>
+    )
+}
+
+
 function Issues({issues}) {
     return (
-        <ul>
+        <div className={styles.container}>
+            <IssueSummary issues={issues} />
             {issues.map((issue) => (
-                <li>{JSON.stringify(issue.node)}</li>
+                <IssueRow issue={issue.node}/>
             ))}
-        </ul>
+        </div>
     )
 }
 
@@ -19,7 +67,7 @@ function Issues({issues}) {
                 query: `
                 query getIssues {
                     repository(owner: "RecordReplay", name: "devtools") {
-                      issues(last: 20, states: OPEN, labels: "has-replay 🚀") {
+                      issues(last: 50, states: OPEN, labels: "has-replay 🚀") {
                         edges {
                           node {
                             title
@@ -28,10 +76,20 @@ function Issues({issues}) {
                               edges {
                                 node {
                                   name
+                                  color
                                 }
                               }
                             }
                             body
+                            author {
+                              ... on User {
+                                avatarUrl
+                                name
+                                url
+                              }
+                            }
+                            number
+                            createdAt
                           }
                         }
                       }
