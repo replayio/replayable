@@ -13,15 +13,15 @@ function IssueData({title, number, date, author, url, labels}) {
         width={40}
       />
       <div className={styles.data}>
-<a href={url} target="_blank"><span>{title}</span></a>
-<div className={styles.muted}><span>Issue #{number}</span> <span>Created on {formattedDate}</span> <span>by <a href={author.url} target="_blank">{author.name}</a></span></div>
+<a href={url} target="_blank" rel="noreferrer"><span>{title}</span></a>
+<div className={styles.muted}><span>Issue #{number}</span> <span>Created on {formattedDate}</span> <span>by <a href={author.url} target="_blank" rel="noreferrer">{author.name}</a></span></div>
 </div>
 <div className={styles.labels}>
 {labels.map((label) => (
 // We could pull the actual label color in with style={{backgroundColor:'#' + label.node.color}}
 // GitHub uses a lightness switch calculation to determine what font color to use based on the label color
 // For now will just use a single color for all labels
-    <span >{label.node.name}</span>
+    <span key={label.node.name} >{label.node.name}</span>
 ))}
 </div>
         </div>
@@ -50,13 +50,13 @@ function Issues({issues}) {
         <div className={styles.container}>
             <IssueSummary issues={issues} />
             {issues.map((issue) => (
-                <IssueRow issue={issue.node}/>
+                <IssueRow key={issue.node.number} issue={issue.node}/>
             ))}
         </div>
     )
 }
 
-    export async function getStaticProps() {
+    export async function getServerSideProps() {
         const res = await fetch('https://api.github.com/graphql', {
             method: 'POST',
             headers: {
