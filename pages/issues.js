@@ -2,7 +2,7 @@ function Issues({issues}) {
     return (
         <ul>
             {issues.map((issue) => (
-                <li>{issue.node.title}</li>
+                <li>{JSON.stringify(issue.node)}</li>
             ))}
         </ul>
     )
@@ -18,24 +18,25 @@ function Issues({issues}) {
             body: JSON.stringify({
                 query: `
                 query getIssues {
-                    repository(owner:"octocat", name:"Hello-World") {
-                        issues(last:20, states:CLOSED) {
-                          edges {
-                            node {
-                              title
-                              url
-                              labels(first:5) {
-                                edges {
-                                  node {
-                                    name
-                                  }
+                    repository(owner: "RecordReplay", name: "devtools") {
+                      issues(last: 20, states: OPEN, labels: "has-replay 🚀") {
+                        edges {
+                          node {
+                            title
+                            url
+                            labels(first: 5) {
+                              edges {
+                                node {
+                                  name
                                 }
                               }
                             }
+                            body
                           }
                         }
                       }
-                }`,
+                    }
+                  }`,
                 variables: {}
             })
         })
