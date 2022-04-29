@@ -58,16 +58,15 @@
 
 .replay {
   float: right;
-  background-color: #be7185;
-  border: 1px solid #ffe3ea;
+
+  background-color: #ff4a79;
   color: white;
   line-height: 22px;
 }
 
 .loom {
   float: right;
-  background-color: #9693dd;
-  border: 2px solid #5c59aa;
+  background-color: #7069ff;
   color: white;
   line-height: 22px;
 }
