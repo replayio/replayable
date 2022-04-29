@@ -1,0 +1,406 @@
+{
+  "data": {
+    "repository": {
+      "issues": {
+        "edges": [
+          {
+            "node": {
+              "title": "We incorrectly indicate which network request(s) we're paused on",
+              "url": "https://github.com/RecordReplay/devtools/issues/5769",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Bug",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "design-complete",
+                      "color": "0E8A16"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "Sometimes a request that has a rewind/fast-forward will not show its rewind/fast-forward button, depending on where you are currently paused.\r\n\r\nhttps://app.replay.io/recording/hello-react--3620f8b3-9bce-41c5-a74b-f9f2372d390c\r\n\r\n",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 5769,
+              "createdAt": "2022-03-14T15:29:08Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Clicking Use Sourcemaps doesn't work while you're paused on a hit for a location in that file",
+              "url": "https://github.com/RecordReplay/devtools/issues/6285",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "[Replay of the bug](https://app.replay.io/recording/use-sourcemap-click-bug--fed936ac-f1f9-4447-bbc4-f39911dda46f)\r\n[Walkthrough](https://www.loom.com/share/773f06aca0ee4358a722260b63be3d27)",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 6285,
+              "createdAt": "2022-04-09T05:09:43Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Source file names are missing in the quick open modal",
+              "url": "https://github.com/RecordReplay/devtools/issues/6360",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Good first issue",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "Replay of the bug:\r\nhttps://app.replay.io/recording/missing-source-title-in-quick-open--a4087188-aa94-4bd6-a71f-ef2149042ab6\r\n\r\nWalkthrough:\r\nhttps://www.loom.com/share/9879c4ec9b3c4334864936edd7d8400b",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 6360,
+              "createdAt": "2022-04-13T15:17:37Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Quick open doesn't tell the user that sources haven't been loaded yet",
+              "url": "https://github.com/RecordReplay/devtools/issues/6361",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Good first issue",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "feature-debugger",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "Replay of the bug: https://app.replay.io/recording/quick-open-search-results-stalling-because-there-are-no-sources-yet--0f5ddaeb-dada-4ddc-bc2c-09ebdca308ca\r\nWalkthrough of the replay: https://www.loom.com/share/765c3f2069504135881151161a10c7df",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 6361,
+              "createdAt": "2022-04-13T15:36:05Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Cmd/Cmd+shift shortcuts for navigating in the gutter don't work even if hits are displayed",
+              "url": "https://github.com/RecordReplay/devtools/issues/6362",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Good first issue",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "UI Polish",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "Replay of the bug:\r\nhttps://app.replay.io/recording/key-modifiers-are-broken-because-of-heat-maps--7dcc5682-1016-4d3c-bdd3-2ddcac9c1f91\r\nWalkthrough of the Replay:\r\nhttps://www.loom.com/share/a0151787e04140bdbc897d2789cd299c \r\n\r\nWhen we use heat map hits to inform the line number tooltip that we show the user while they hover up and down the editor, we don't end up firing off an analysis. This means that we have the number of hits, but we don't know where they are on the timeline. That's the kind of information that we need to use an analysis for to know.\r\n\r\nBecause we don't have that information, the previous and next shortcuts that are made available when the user holds down the Cmd / Cmd + Shift key is disabled. To the user, it just looks like there are hits, but they can't go forward or backwards, which would imply that things are broken.",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 6362,
+              "createdAt": "2022-04-13T15:37:06Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Comment field sometimes doesn't gain focus",
+              "url": "https://github.com/RecordReplay/devtools/issues/6364",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "Had a customer re-report #6136. I think the root cause was that the comment field wasn't gaining focus as expected so they started typing as they usually would but since the field isn't focused the keyboard shortcut did its thing.\r\n\r\nhttps://app.replay.io/recording/replay-involuntary-theme-change--4b0f6127-57e1-4fe1-8e37-b74ed43111ee",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/788456?u=e457a4656512e6f724bf881af436729d0391e51f&v=4",
+                "name": "Ryan Duffy",
+                "url": "https://github.com/ryanjduffy"
+              },
+              "number": 6364,
+              "createdAt": "2022-04-13T17:50:25Z"
+            }
+          },
+          {
+            "node": {
+              "title": "\"this replay is private\" notice shown when viewing a replay that I should be able to view",
+              "url": "https://github.com/RecordReplay/devtools/issues/6370",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Bug",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "Couldn't reproduce this but have seen it a few times. A refresh would usually fix it. I'll fill this in more if I see more info. Thankfully I saw it in one of our failing mock tests.\r\n\r\nReplay of the bug:\r\nhttps://app.replay.io/recording/replay-of-devtools-lwn0eipop-recordreplayvercelapp--0ce8885d-8740-45fa-95e5-ad507cfb4c74?point=35372522354509346348051743331320704&time=25165&hasFrames=false\r\n\r\n<img width=\"1189\" alt=\"image\" src=\"https://user-images.githubusercontent.com/15959269/163263506-dff0c4c0-c418-4f10-a8c6-f5e3e26f3234.png\">",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 6370,
+              "createdAt": "2022-04-13T20:22:02Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Loading progress bar rubberbanding behavior",
+              "url": "https://github.com/RecordReplay/devtools/issues/6500",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "UI Polish",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "feature-loading",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "There are times when the main loading progress bar goes backward instead of forward. Not 100% sure what the reason is, but there's a few suspects in the way we calculate what that progress number is:\r\n\r\nhttps://github.com/RecordReplay/devtools/blob/716baa2f99f68076d118f21b2cf31af2b50c4f5c/src/ui/actions/app.ts#L178-L200",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/15959269?u=c306593cc74379e6ae6dc591d5d36d1cb3232f9f&v=4",
+                "name": "Jaril",
+                "url": "https://github.com/jaril"
+              },
+              "number": 6500,
+              "createdAt": "2022-04-21T15:06:53Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Bad UX when selecting a Network request by clicking on a comment",
+              "url": "https://github.com/RecordReplay/devtools/issues/6507",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Bug",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "bug-report",
+                      "color": "8446CC"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "feature-net-monitor",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "The Loom below shows two problems:\r\n- [ ] Clicking on a Network request above a comment doesn't scroll the selected row into view in the Network panel (so it's confusing in terms of what has been selected).\r\n- [ ] The request/response tab information isn't loaded (it's just a blank panel) until/unless you also click on the row in the Network panel (which is not intuitive and feels kind of broken).\r\n\r\nLoom: https://www.loom.com/share/52f49a71a34b4c6bbdac693691b64654\r\n\r\nReplays:\r\n* https://app.replay.io/recording/replay-comments-and-network-response-bug--720c0335-fa05-4149-a278-fbbb1210a72e\r\n* https://app.replay.io/recording/another-replay-network-request-loading-recording--42824955-255c-4d75-8257-6eb7cfc50c75",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/29597?u=417a1ec63c2396239beb9453aafdd54275c94765&v=4",
+                "name": "Brian Vaughn",
+                "url": "https://github.com/bvaughn"
+              },
+              "number": 6507,
+              "createdAt": "2022-04-21T17:39:00Z"
+            }
+          },
+          {
+            "node": {
+              "title": "React DevTools should show a loading screen",
+              "url": "https://github.com/RecordReplay/devtools/issues/6540",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "Bug",
+                      "color": "d876e3"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "feature-framework",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "feature-loading",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "React DevTools will not be available until the replay finishes indexing. \r\n\r\nIn that time, we show the message \"React has not loaded\" which implies that React will bootstrap in the future. \r\n\r\n[replay](https://app.replay.io/recording/react-devtools-loading--a799dd1b-d754-43e4-b627-8ed6b1e42b01?point=108713715482818343399949416250998784&time=46643&hasFrames=false\r\n)",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/254562?v=4",
+                "name": "Jason Laster",
+                "url": "https://github.com/jasonLaster"
+              },
+              "number": 6540,
+              "createdAt": "2022-04-23T05:12:18Z"
+            }
+          },
+          {
+            "node": {
+              "title": "loading bar is shown momentarily",
+              "url": "https://github.com/RecordReplay/devtools/issues/6541",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "feature-loading",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "**Description:**\r\n\r\nThe Replay loading bar is shown for a bit before the uploading screen is shown again. My assumption is that we only show the loading bar after we're done uploading\r\n\r\n[replay](https://app.replay.io/recording/react-devtools-loading--a799dd1b-d754-43e4-b627-8ed6b1e42b01?point=11033630825561897196594425302614636&time=4661&hasFrames=false)",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/254562?v=4",
+                "name": "Jason Laster",
+                "url": "https://github.com/jasonLaster"
+              },
+              "number": 6541,
+              "createdAt": "2022-04-23T05:14:00Z"
+            }
+          },
+          {
+            "node": {
+              "title": "Accepting multiple team invites can show a weird caching value",
+              "url": "https://github.com/RecordReplay/devtools/issues/6568",
+              "labels": {
+                "edges": [
+                  {
+                    "node": {
+                      "name": "feature-library",
+                      "color": "ccebff"
+                    }
+                  },
+                  {
+                    "node": {
+                      "name": "has-replay 🚀",
+                      "color": "1d76db"
+                    }
+                  }
+                ]
+              },
+              "body": "### Description\r\n\r\nAccepting multiple team invites can cache loading states\r\n\r\nhttps://app.replay.io/recording/accepting-one-team-shows-loading-for-the-others--af52a28f-91d7-46b5-83f4-1ff4fc4c6003?point=39266744999103529691042957142002518&time=15117&hasFrames=false#",
+              "author": {
+                "avatarUrl": "https://avatars.githubusercontent.com/u/254562?v=4",
+                "name": "Jason Laster",
+                "url": "https://github.com/jasonLaster"
+              },
+              "number": 6568,
+              "createdAt": "2022-04-27T03:02:36Z"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
