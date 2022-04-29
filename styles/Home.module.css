@@ -1,15 +1,73 @@
 .container {
-  height: 100%;
-  width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  width: 85%;
+  margin: 4rem auto;
 }
 
-.main h1 {
-  font-size: 10rem;
-  font-weight: 200;
+.row {
+  border: solid 1px #30363d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0.5rem;
+  gap: 1rem;
+}
+.issue {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.avatar {
+  border-radius: 50%;
+}
+
+.data {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.muted {
+  font-size: smaller;
+  color: #8b949e;
+}
+
+.labels {
+  display: inline;
+}
+
+.labels span {
+  border-radius: 2em;
+  padding: 0 7px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  margin: 0.25rem;
+}
+
+.labels img {
+  margin: 0 4px 0 2px;
+}
+
+.label {
+  display: inline-block;
+  border: 1px solid transparent;
+  line-height: 18px;
+}
+
+.replay {
+  float: right;
+  background-color: #be7185;
+  border: 1px solid #ffe3ea;
   color: white;
-  font-family: "gotmilk", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  line-height: 22px;
+}
+
+.loom {
+  float: right;
+  background-color: #9693dd;
+  border: 2px solid #5c59aa;
+  color: white;
+  line-height: 22px;
 }

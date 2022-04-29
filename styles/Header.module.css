@@ -1,4 +1,8 @@
 .header {
     background-color: #161b22;
-    padding: 1rem .5rem;
+    padding: .5rem 1rem;
+    font-size: 2rem;
+    font-weight: 200;
+    font-family: "gotmilk", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
+    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
