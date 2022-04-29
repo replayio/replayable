@@ -1,19 +1,21 @@
-import '../styles/globals.css'
+import "../styles/globals.css";
 import Head from "next/head";
-import styles from '../styles/Header.module.css'
+import styles from "../styles/Header.module.css";
 
 function Header() {
   return (
     <div className={styles.header}>
-     <h1>🐞 Got Bugs?</h1>
+      <div className={styles.container}>
+        <h1>Got Bugs?</h1>
+      </div>
     </div>
-  )
+  );
 }
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-    <Head>
+      <Head>
         <title>got bugs</title>
         <meta name="description" content="got bugs?" />
         <link rel="icon" href="/question-mark.svg" />
@@ -21,7 +23,7 @@ function MyApp({ Component, pageProps }) {
       <Header />
       <Component {...pageProps} />
     </>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
