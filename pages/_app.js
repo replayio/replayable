@@ -6,7 +6,7 @@ function Header() {
   return (
     <div className={styles.header}>
       <div className={styles.container}>
-        <h1>Got Bugs?</h1>
+        <h1> </h1>
       </div>
     </div>
   );
