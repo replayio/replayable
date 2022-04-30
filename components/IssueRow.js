@@ -18,14 +18,16 @@ export default function IssueRow({ issue, toggleLabel }) {
       <div className={styles.issue}>
         {/* Avatar */}
         <div className={styles.avatarContainer}>
-          <Image
-            className={styles.avatar}
-            src={author.avatarUrl}
-            alt="Picture of the author"
-            layout="fixed"
-            height={30}
-            width={30}
-          />
+          {author.avatarUrl && (
+            <Image
+              className={styles.avatar}
+              src={author.avatarUrl}
+              alt="Picture of the author"
+              layout="fixed"
+              height={30}
+              width={30}
+            />
+          )}
         </div>
 
         <div className={styles.data}>
