@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useSWR from "swr";
+import { useRouter } from "next/router";
 
 import styles from "../styles/Home.module.css";
 import IssueRow from "../components/IssueRow";
@@ -31,14 +32,24 @@ function useGithubSearch(filters) {
 }
 
 export default function Home() {
+  const { query } = useRouter();
   const [filters, setFilters] = useState({
     labels: ["has-replay 🚀"],
-    owner: "RecordReplay",
+    org: "RecordReplay",
     repo: "devtools",
     state: "CLOSED",
   });
 
   const { issues, error } = useGithubSearch(filters);
+
+  useEffect(() => {
+    setFilters((filters) => ({
+      ...filters,
+      repo: query.repo || filters.repo,
+      org: query.org || filters.org,
+    }));
+  }, [query]);
+
   const toggleLabel = (label) => {
     const labels = filters.labels.includes(label)
       ? filters.labels.filter((l) => l !== label)

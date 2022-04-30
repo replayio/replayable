@@ -1,11 +1,11 @@
 const query = `
 query getIssues(
   $labels: [String!], 
-  $owner: String!, 
+  $org: String!,
   $repo: String!,
   $state: IssueState!
 ) {
-  repository(owner: $owner, name: $repo) {
+  repository(owner: $org, name: $repo) {
     issues(last: 50, states: [$state], labels: $labels) {
       edges {
         node {
