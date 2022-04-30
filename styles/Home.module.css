@@ -13,6 +13,15 @@
   padding: 1rem 0.5rem;
   gap: 1rem;
 }
+
+.row:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.row:hover {
+  background-color: #161b22;
+}
+
 .issue {
   display: flex;
   flex-direction: row;
@@ -22,18 +31,30 @@
   border-radius: 50%;
 }
 
+.avatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+  padding: 0 0.5rem;
+}
+
 .data {
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+  font-weight: bold;
+  color: #c9d1d9
 }
 
 .muted {
   font-size: smaller;
   color: #8b949e;
+  font-weight: normal;
 }
 
 .labels {
+  margin-left: 0.5rem;
   display: inline;
 }
 
@@ -43,7 +64,7 @@
   font-size: 12px;
   font-weight: 500;
   white-space: nowrap;
-  margin: 0.25rem;
+  margin: 0 0.25rem;
 }
 
 .labels img {
@@ -64,9 +85,33 @@
   line-height: 22px;
 }
 
+.replay:hover {
+  background-color: #f83265;
+}
+
 .loom {
   float: right;
   background-color: #7069ff;
   color: white;
   line-height: 22px;
+}
+
+.loom:hover {
+  background-color: #6058fc;
+}
+
+.tableHeader {
+  border: solid 1px #30363d;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  gap: 1rem;
+  background-color: #161b22;
+  border-radius: 4px 4px 0 0;
+}
+
+.headerLabel {
+  font-size: 0.8rem;
+  font-weight: bold;
 }
