@@ -10,11 +10,11 @@ export default function IssueSummary({ issues, filters, toggleIssueState }) {
           style={
             state === "OPEN"
               ? { fontWeight: "bold" }
-              : { textDecoration: "underline" }
+              : { textDecoration: "underline", cursor: "pointer" }
           }
           onClick={() => toggleIssueState("OPEN")}
         >
-          {state === "OPEN" ? issues.length : null}{" "}
+          {state === "OPEN" ? issues.length + " " : null}
           {state === "OPEN" ? "Open" : "View Open"}
         </span>
         <span
@@ -22,11 +22,11 @@ export default function IssueSummary({ issues, filters, toggleIssueState }) {
           style={
             state === "CLOSED"
               ? { fontWeight: "bold" }
-              : { textDecoration: "underline" }
+              : { textDecoration: "underline", cursor: "pointer" }
           }
           onClick={() => toggleIssueState("CLOSED")}
         >
-          {state === "CLOSED" ? issues.length : null}{" "}
+          {state === "CLOSED" ? issues.length + " " : null}
           {state === "OPEN" ? "View Closed" : "Closed"}
         </span>
       </div>
