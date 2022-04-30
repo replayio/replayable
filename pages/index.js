@@ -13,6 +13,23 @@ function filtersToQuery(filters) {
     .join("&");
 }
 
+function useGithubSearch(filters) {
+  const { data: resp, error } = useSWR(
+    `/api/issues?${filtersToQuery(filters)}`,
+    fetcher
+  );
+
+  // Filter issues that do not match all of the labels
+  const issues = resp?.filter(
+    (issue) =>
+      filters.labels.filter((label) =>
+        issue.node.labels.edges?.map((label) => label.node.name).includes(label)
+      ).length == filters.labels.length
+  );
+
+  return { issues, error };
+}
+
 export default function Home() {
   const [filters, setFilters] = useState({
     labels: ["has-replay 🚀"],
@@ -20,11 +37,8 @@ export default function Home() {
     repo: "devtools",
     state: "CLOSED",
   });
-  const { data: issues, error } = useSWR(
-    `/api/issues?${filtersToQuery(filters)}`,
-    fetcher
-  );
 
+  const { issues, error } = useGithubSearch(filters);
   const toggleLabel = (label) => {
     const labels = filters.labels.includes(label)
       ? filters.labels.filter((l) => l !== label)
@@ -45,7 +59,7 @@ export default function Home() {
     <div className={styles.container}>
       <IssueSummary
         issues={issues}
-        state={filters.state}
+        filters={filters}
         toggleIssueState={toggleIssueState}
       />
       {issues.map((issue) => (

@@ -108,6 +108,7 @@
   border: solid 1px #30363d;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   padding: 1rem 1rem;
   gap: 1rem;
   background-color: #161b22;
@@ -116,4 +117,5 @@
 
 .headerLabel {
   font-size: 0.8rem;
+  margin-right: 0.5rem;
 }
