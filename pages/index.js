@@ -18,6 +18,7 @@ export default function Home() {
     labels: ["has-replay 🚀"],
     owner: "RecordReplay",
     repo: "devtools",
+    state: "CLOSED"
   });
   const { data: issues, error } = useSWR(
     `/api/issues?${filtersToQuery(filters)}`,
@@ -29,16 +30,21 @@ export default function Home() {
       ? filters.labels.filter((l) => l !== label)
       : [...filters.labels, label];
 
-    console.log("labels", labels);
     setFilters({ ...filters, labels });
   };
+
+  const toggleIssueState = (view) => {
+    const state = filters.state === view ? filters.state : view;
+    setFilters({...filters, state})
+    
+  }
 
   if (error) return <div>failed to load</div>;
   if (!issues) return <div></div>;
 
   return (
     <div className={styles.container}>
-      <IssueSummary issues={issues} />
+      <IssueSummary issues={issues} state={filters.state} toggleIssueState={toggleIssueState} />
       {issues.map((issue) => (
         <IssueRow
           key={issue.node.number}
