@@ -55,7 +55,7 @@ export default function Home() {
     labels: ["has-replay 🚀"],
     org: "",
     repo: "",
-    state: "open",
+    state: "OPEN",
   });
 
   const { issues, error } = useGithubSearch(filters);
