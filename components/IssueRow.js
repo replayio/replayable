@@ -3,13 +3,15 @@ import IssueLinks from "./IssueLinks";
 import styles from "../styles/Home.module.css";
 import { getLabelFontColor } from "../scripts/utilities";
 
-export default function IssueRow({ issue, toggleLabel }) {
+export default function IssueRow({ issue, toggleLabel, toggleRepo, filters }) {
   const title = issue.title;
   const date = issue.createdAt;
   const author = issue.author;
   const number = issue.number;
   const url = issue.url;
   const labels = issue.labels.edges;
+  const filteredByRepo = filters.repo;
+
   const formattedDate = new Date(date).toLocaleDateString();
 
   return (
@@ -51,7 +53,23 @@ export default function IssueRow({ issue, toggleLabel }) {
 
           {/* Secondary summary row */}
           <div className={styles.muted}>
-            <span>Issue #{number}</span> <span>Created on {formattedDate}</span>{" "}
+            {!filteredByRepo && (
+              <a
+                href="#"
+                onClick={() =>
+                  toggleRepo(
+                    issue.repository?.name,
+                    issue.repository?.owner.login
+                  )
+                }
+              >
+                {issue.repository?.owner.login}/{issue.repository?.name}{" "}
+              </a>
+            )}
+            <a href={issue.url} target="_blank" rel="noreferrer">
+              Issue #{number}{" "}
+            </a>
+            {filteredByRepo && <span>Created on {formattedDate} </span>}
             <span>
               by{" "}
               <a href={author.url} target="_blank" rel="noreferrer">

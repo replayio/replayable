@@ -54,6 +54,6 @@ export default async function handler(req, res) {
     }),
   });
   const data = await response.json();
-  const issues = data.data.repository.issues.edges;
+  const issues = data.data.repository.issues.edges.map((edge) => edge.node);
   return res.json(issues);
 }
