@@ -28,10 +28,8 @@ export default function IssueSummary({
     <>
       {filters.repo && (
         <h2>
-          {filters.org}/{filters.repo}
           <a href="#" onClick={() => toggleRepo("", "")}>
-            {" "}
-            x
+            {filters.org}/{filters.repo}
           </a>
         </h2>
       )}
