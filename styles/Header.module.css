@@ -1,9 +1,10 @@
 .header {
     background-color: #161b22;
     display: flex;
-    justify-content: center;
-    font-size: 0.75rem;
-    font-weight: 200;
+    flex-direction: row;
+    justify-content: right;
+    padding: 1rem;
+    font-size: 2rem;
     font-family: "gotmilk", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
     Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
@@ -12,6 +13,6 @@
     margin: 0.5rem 0;
 }
 
-.container { 
-    width: 85%;
+.header span:hover {
+    cursor: pointer;
 }

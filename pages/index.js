@@ -20,7 +20,6 @@ function useGithubSearch(filters) {
     fetcher
   );
 
-  console.log(resp);
   // Filter issues that do not match all of the labels
   const issues = resp?.filter(
     (issue) =>
@@ -49,7 +48,7 @@ function useRepoSearch(filters) {
   return { issues, error };
 }
 
-export default function Home() {
+export default function Home( {buggy}) {
   const { query } = useRouter();
   const [filters, setFilters] = useState({
     labels: ["has-replay 🚀"],
