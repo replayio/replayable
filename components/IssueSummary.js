@@ -1,5 +1,21 @@
 import styles from "../styles/Home.module.css";
 
+function State({ active, count, label, onSelect }) {
+  return (
+    <span
+      className={styles.headerLabel}
+      onClick={() => onSelect()}
+      style={
+        active
+          ? { fontWeight: "bold" }
+          : { textDecoration: "underline", cursor: "pointer" }
+      }
+    >
+      {active ? `${count} ${label}` : `View ${label}`}
+    </span>
+  );
+}
+
 export default function IssueSummary({
   issues,
   filters,
@@ -7,6 +23,7 @@ export default function IssueSummary({
   toggleIssueState,
 }) {
   const { state, labels } = filters;
+
   return (
     <>
       {filters.repo && (
@@ -20,30 +37,18 @@ export default function IssueSummary({
       )}
       <div className={styles.tableHeader}>
         <div>
-          <span
-            className={styles.headerLabel}
-            style={
-              state === "OPEN"
-                ? { fontWeight: "bold" }
-                : { textDecoration: "underline", cursor: "pointer" }
-            }
-            onClick={() => toggleIssueState("OPEN")}
-          >
-            {state === "OPEN" ? issues.length + " " : null}
-            {state === "OPEN" ? "Open" : "View Open"}
-          </span>
-          <span
-            className={styles.headerLabel}
-            style={
-              state === "CLOSED"
-                ? { fontWeight: "bold" }
-                : { textDecoration: "underline", cursor: "pointer" }
-            }
-            onClick={() => toggleIssueState("CLOSED")}
-          >
-            {state === "CLOSED" ? issues.length + " " : null}
-            {state === "OPEN" ? "View Closed" : "Closed"}
-          </span>
+          <State
+            active={state == "OPEN"}
+            label="Open"
+            onSelect={() => toggleIssueState("OPEN")}
+            count={issues.length}
+          />
+          <State
+            active={state == "CLOSED"}
+            label="Closed"
+            onSelect={() => toggleIssueState("CLOSED")}
+            count={issues.length}
+          />
         </div>
         <div>
           {labels.map((label) => (
