@@ -107,6 +107,7 @@ export default function Home( {buggy}) {
           toggleRepo={toggleRepo}
           filters={filters}
           issue={issue}
+          buggy={buggy}
         />
       ))}
     </div>
