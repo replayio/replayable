@@ -2,8 +2,8 @@ import styles from "../styles/Home.module.css";
 import { useState } from "react";
 
 export default function BuggyIssueLinks({ issue }) {
-  const replayRegex = /(https:\/\/app\.replay\.io\/recording\/[^\s]+)/g;
-  const loomRegex = /(https:\/\/www\.loom\.com\/share\/[^\s]+)/g;
+  const replayRegex = /https:\/\/app\.replay\.io\/recording\/[^\s]+/;
+  const loomRegex = /https:\/\/www\.loom\.com\/share\/[^\s]+/;
   const replays = issue.body.match(replayRegex);
   const looms = issue.body.match(loomRegex);
   const [fontWeight, setFontWeight] = useState('normal')
