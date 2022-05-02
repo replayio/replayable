@@ -16,9 +16,12 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>got bugs</title>
-        <meta name="description" content="got bugs?" />
-        <link rel="icon" href="/question-mark.svg" />
+        <title>Has Replay 🚀</title>
+        <meta
+          name="description"
+          content="Github Issues that have a has-replay label"
+        />
+        <link rel="icon" href="/favico.svg" />
       </Head>
       <Header />
       <Component {...pageProps} />
