@@ -52,7 +52,7 @@ function useRepoSearch(filters) {
 export default function Home() {
   const { query } = useRouter();
   const [filters, setFilters] = useState({
-    labels: ["has-replay 🚀"],
+    labels: ["has-replay"],
     org: "",
     repo: "",
     state: "OPEN",
