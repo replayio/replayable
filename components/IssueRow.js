@@ -41,7 +41,7 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
             </a>
             <div className={styles.labels}>
               {labels
-                .filter((label) => label.node.name != "has-replay 🚀")
+                .filter((label) => label.node.name != "has-replay")
                 .map((label) => (
                   <Label
                     key={label.node.name}

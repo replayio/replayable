@@ -51,7 +51,7 @@ function useRepoSearch(filters) {
 export default function Home( {buggy}) {
   const { query } = useRouter();
   const [filters, setFilters] = useState({
-    labels: ["has-replay 🚀"],
+    labels: ["has-replay"],
     org: "",
     repo: "",
     state: "OPEN",
