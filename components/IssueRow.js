@@ -2,8 +2,9 @@ import Image from "next/image";
 import IssueLinks from "./IssueLinks";
 import styles from "../styles/Home.module.css";
 import { getLabelFontColor } from "../scripts/utilities";
+import BuggyIssueLinks from "./BuggyIssueLinks";
 
-export default function IssueRow({ issue, toggleLabel, toggleRepo, filters }) {
+export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, buggy }) {
   const title = issue.title;
   const date = issue.createdAt;
   const author = issue.author;
@@ -80,7 +81,7 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters }) {
         </div>
       </div>
 
-      <IssueLinks issue={issue} />
+      {buggy ? <BuggyIssueLinks issue={issue} /> : <IssueLinks issue={issue} />}
     </div>
   );
 }
