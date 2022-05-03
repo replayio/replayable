@@ -13,7 +13,7 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
   const labels = issue.labels.edges;
   const filteredByRepo = filters.repo;
 
-  const formattedDate = new Date(date).toLocaleDateString();
+  const formattedDate =  buggy ? new Date(date).getDate() : new Date(date).toLocaleDateString();
 
   return (
     <div className={styles.row}>
@@ -47,6 +47,7 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
                     key={label.node.name}
                     label={label}
                     toggleLabel={toggleLabel}
+                    buggy = { buggy}
                   />
                 ))}
             </div>
@@ -86,8 +87,8 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
   );
 }
 
-function Label({ label, toggleLabel }) {
-  const fontColor = getLabelFontColor(label.node.color);
+function Label({ label, toggleLabel, buggy }) {
+  const fontColor = buggy ? getLabelFontColor(label) : getLabelFontColor(label.node.color);
 
   return (
     <span
