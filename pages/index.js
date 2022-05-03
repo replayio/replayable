@@ -14,7 +14,7 @@ function filtersToQuery(filters) {
     .join("&");
 }
 
-function useGithubSearch(filters) {
+function useGithubSearch(filters, buggy) {
   const { data: resp, error } = useSWR(
     `/api/search?${filtersToQuery(filters)}`,
     fetcher
@@ -57,7 +57,7 @@ export default function Home( {buggy}) {
     state: "OPEN",
   });
 
-  const { issues, error } = useGithubSearch(filters);
+  const { issues, error } = useGithubSearch(filters, buggy);
 
   // Set the filters from the query string
   useEffect(() => {

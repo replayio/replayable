@@ -6,20 +6,32 @@ export default function BuggyIssueLinks({ issue }) {
   const loomRegex = /https:\/\/www\.loom\.com\/share\/[^\s]+/;
   const replays = issue.body.match(replayRegex);
   const looms = issue.body.match(loomRegex);
-  const [fontWeight, setFontWeight] = useState('normal')
+  const [fontWeight, setFontWeight] = useState("normal");
   return (
     <div className={styles.labels}>
       {looms?.map((loom) => (
-        <a onMouseEnter={() => setFontWeight('bold')} href={loom} target="_blank" rel="noreferrer" key={loom} >
-          <span className={styles.loom} style={{fontWeight: fontWeight}}>
+        <a
+          onMouseEnter={() => setFontWeight("bold")}
+          href={loom}
+          target="_blank"
+          rel="noreferrer"
+          key={loom}
+        >
+          <span className={styles.loom} style={{ fontWeight: fontWeight }}>
             <img src="/loom.svg" alt="" />
             Loom
           </span>
         </a>
       ))}
       {replays?.map((replay) => (
-        <a onMouseEnter={() => setFontWeight('bold')} href={replay} target="_blank" rel="noreferrer" key={replay} >
-          <span className={styles.replay} style={{fontWeight: fontWeight}}>
+        <a
+          onMouseEnter={() => setFontWeight("bold")}
+          href={replay}
+          target="_blank"
+          rel="noreferrer"
+          key={replay}
+        >
+          <span className={styles.replay} style={{ fontWeight: fontWeight }}>
             <img src="/replay.svg" alt="" />
             Replay
           </span>

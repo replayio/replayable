@@ -4,7 +4,13 @@ import styles from "../styles/Home.module.css";
 import { getLabelFontColor } from "../scripts/utilities";
 import BuggyIssueLinks from "./BuggyIssueLinks";
 
-export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, buggy }) {
+export default function IssueRow({
+  issue,
+  toggleLabel,
+  toggleRepo,
+  filters,
+  buggy,
+}) {
   const title = issue.title;
   const date = issue.createdAt;
   const author = issue.author;
@@ -13,7 +19,9 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
   const labels = issue.labels.edges;
   const filteredByRepo = filters.repo;
 
-  const formattedDate = new Date(date).toLocaleDateString();
+  const formattedDate = buggy
+    ? new Date(date).getDate()
+    : new Date(date).toLocaleDateString();
 
   return (
     <div className={styles.row}>
@@ -47,6 +55,7 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
                     key={label.node.name}
                     label={label}
                     toggleLabel={toggleLabel}
+                    buggy={buggy}
                   />
                 ))}
             </div>
@@ -86,8 +95,10 @@ export default function IssueRow({ issue, toggleLabel, toggleRepo, filters, bugg
   );
 }
 
-function Label({ label, toggleLabel }) {
-  const fontColor = getLabelFontColor(label.node.color);
+function Label({ label, toggleLabel, buggy }) {
+  const fontColor = buggy
+    ? getLabelFontColor(label)
+    : getLabelFontColor(label.node.color);
 
   return (
     <span
