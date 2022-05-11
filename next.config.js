@@ -1,4 +1,5 @@
 module.exports = {  eslint: {
+  productionBrowserSourceMaps: true,
   ignoreDuringBuilds: true,
 },
   reactStrictMode: true,
