@@ -7,6 +7,7 @@ function Header( {buggy, toggleBuggy}) {
 
   return (
     <div className={styles.header}>
+      <h3>A collection of GitHub issues with the 'has-replay' label.</h3>
         <span onClick={() => toggleBuggy()}>{buggy ? "🐞" : "✅" }</span>
     </div>
   );

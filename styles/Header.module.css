@@ -2,15 +2,9 @@
     background-color: #161b22;
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    padding: 1rem;
-    font-size: 2rem;
-    font-family: "gotmilk", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-    Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-.header h1 {
-    margin: 0.5rem 0;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
 }
 
 .header span:hover {
