@@ -39,7 +39,6 @@ query($query: String!) {
 }`;
 
 export default async function handler(req, res) {
-
   const { repo, org, state, labels } = req.query;
   const repoQuery = repo != "" ? `repo:${org}/${repo}` : "";
   const labelQuery = labels
@@ -55,7 +54,7 @@ export default async function handler(req, res) {
     Authorization: `bearer ${process.env.GITHUB_API_TOKEN}`,
   };
 
-  const response = await fetch("https://api.github.com/graphql", {
+  const response = await fetch("https://hasreplay.graphcdn.app", {
     method: "POST",
     headers,
     body: JSON.stringify({
