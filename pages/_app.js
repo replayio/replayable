@@ -15,9 +15,9 @@ function Header() {
           </Link>
         </div>
         <div>
-          <Link href="https://replay.io/oss" target="_blank" rel="noreferrer">
+          <a href="https://replay.io/oss" target="_blank" rel="noreferrer">
             OSS Guide
-          </Link>
+          </a>
           <Link href="/about" target="_blank" rel="noreferrer">
             About
           </Link>

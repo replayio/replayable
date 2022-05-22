@@ -1,14 +1,16 @@
 .description {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1rem 0rem;
-  }
-  
-  .description li {
-    list-style-type: none;
-  }
-  
-  .description a {
-    font-weight: bold;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0rem;
+  /* pushes footer to bottom, allows for 40px footer and 50px header, there may be a better way to implement this using flexbox */
+  min-height: calc(100vh - 92px);
+}
+
+.description li {
+  list-style-type: none;
+}
+
+.description a {
+  font-weight: bold;
+}
