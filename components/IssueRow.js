@@ -4,6 +4,8 @@ import styles from "../styles/Home.module.css";
 import { getLabelFontColor } from "../scripts/utilities";
 import BuggyIssueLinks from "./BuggyIssueLinks";
 
+const showLabels = false;
+
 export default function IssueRow({
   issue,
   toggleLabel,
@@ -29,7 +31,7 @@ export default function IssueRow({
       <div className={styles.issue}>
         {/* Avatar */}
         <div className={styles.avatarContainer}>
-          {author.avatarUrl && (
+          {author?.avatarUrl ? (
             <Image
               className={styles.avatar}
               src={author.avatarUrl}
@@ -38,6 +40,8 @@ export default function IssueRow({
               height={30}
               width={30}
             />
+          ) : (
+            <div className={styles.defaultAvatar}></div>
           )}
         </div>
 
@@ -47,18 +51,20 @@ export default function IssueRow({
             <a href={url} target="_blank" rel="noreferrer">
               <span>{title}</span>
             </a>
-            <div className={styles.labels}>
-              {labels
-                .filter((label) => label.node.name != "has-replay")
-                .map((label) => (
-                  <Label
-                    key={label.node.name}
-                    label={label}
-                    toggleLabel={toggleLabel}
-                    buggy={buggy}
-                  />
-                ))}
-            </div>
+            {showLabels && (
+              <div className={styles.labels}>
+                {labels
+                  .filter((label) => label.node.name != "has-replay")
+                  .map((label) => (
+                    <Label
+                      key={label.node.name}
+                      label={label}
+                      toggleLabel={toggleLabel}
+                      buggy={buggy}
+                    />
+                  ))}
+              </div>
+            )}
           </div>
 
           {/* Secondary summary row */}
@@ -80,12 +86,16 @@ export default function IssueRow({
               Issue #{number}{" "}
             </a>
             {filteredByRepo && <span>Created on {formattedDate} </span>}
-            <span>
-              by{" "}
-              <a href={author.url} target="_blank" rel="noreferrer">
-                {author.name}
-              </a>
-            </span>
+            {author?.name ? (
+              <span>
+                by{" "}
+                <a href={author.url} target="_blank" rel="noreferrer">
+                  {author.name}
+                </a>
+              </span>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </div>

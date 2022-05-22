@@ -11,7 +11,7 @@ function Header() {
         <div className={styles.left}>
           <img alt="Replay" src="replay.svg" width={20} height={20} />
           <Link href="/">
-            <a>Has Replay</a>
+            <a>Replayable</a>
           </Link>
         </div>
         <div>
@@ -54,11 +54,8 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <title>Has Replay 🚀</title>
-        <meta
-          name="description"
-          content="Github Issues that have a has-replay label"
-        />
+        <title>Replayable</title>
+        <meta name="description" content="Github Issues that include replays" />
         <link rel="icon" href="/favico.svg" />
       </Head>
       <Header />

@@ -2,37 +2,23 @@ import styles from "../styles/about.module.css";
 
 export default function About() {
   return (
-    <footer>
-      <div className={styles.description}>
+    <div className={styles.description}>
+      <div className={styles.content}>
         <p>
-          Use the has-replay label for bug reports that{" "}
-          <a
-            href="https://replay.io/record-bugs"
-            target="_blank"
-            rel="noreferrer"
-          >
-            include a replay
-          </a>{" "}
-          to feature your issue below.
+          Replayable is a collection of Github Issues that include replays.{" "}
         </p>
-        <ul>
-          <li>
-            🟩 <b>Contribute</b> to projects by investigating <b>open</b> issues
-            using Replay to debug
-          </li>
-          <li>
-            👀 <b>Learn</b> by reviewing <b>closed</b> issues for real-world
-            debugging examples
-          </li>
-        </ul>
+
         <p>
-          Have an open source project? Check out the{" "}
-          <a href="https://replay.io/oss" target="_blank" rel="noreferrer">
-            Replay OSS Guide
-          </a>{" "}
-          to get reproducible bug reports from your users.
+          Replayable is great for finding OSS issues to contribute to. When an
+          issue has a replay, you have everything you need to get started.
+        </p>
+
+        <p>
+          Replayable is also great for finding real world issues. If you’re
+          stuck on a React Hooks bug, odds are there is a similar issue that has
+          already been solved.
         </p>
       </div>
-    </footer>
+    </div>
   );
 }
