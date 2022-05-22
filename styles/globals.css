@@ -1,7 +1,3 @@
-@font-face {
-  font-family: "gotmilk";
-  src: url("/Gotmilk-Font.ttf");
-}
 
 html,
 body,
@@ -26,4 +22,10 @@ a:hover {
 
 * {
   box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
 }
