@@ -4,6 +4,7 @@
   max-width: 1250px;
   width: 85%;
   margin: 2rem auto;
+  flex-grow: 1;
 }
 
 .row {
@@ -30,6 +31,14 @@
 }
 .avatar {
   border-radius: 50%;
+}
+
+.defaultAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #30363d;
+  margin-right: 0px;
 }
 
 .avatarContainer {

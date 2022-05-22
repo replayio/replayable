@@ -17,7 +17,7 @@ export function filtersToQuery(filters) {
 export default function Home({ buggy }) {
   const { query } = useRouter();
   const [filters, setFilters] = useState({
-    labels: ["has-replay"],
+    labels: [],
     org: "",
     repo: "",
     state: "OPEN",
@@ -25,6 +25,7 @@ export default function Home({ buggy }) {
 
   const { issues, error } = useGithubSearch(filters, buggy);
 
+  console.log(issues);
   // Set the filters from the query string
   useEffect(() => {
     setFilters((filters) => ({

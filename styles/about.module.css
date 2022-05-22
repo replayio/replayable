@@ -5,6 +5,11 @@
   padding: 1rem 0rem;
   /* pushes footer to bottom, allows for 40px footer and 50px header, there may be a better way to implement this using flexbox */
   min-height: calc(100vh - 92px);
+;
+}
+
+.description .content {
+  width: 600px;
 }
 
 .description li {

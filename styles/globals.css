@@ -9,6 +9,8 @@ body,
   background-color: black;
   height: 100%;
   color: #dadfe4;
+  display: flex;
+  flex-direction: column;
 }
 
 a {

@@ -38,15 +38,33 @@ query($query: String!) {
   }
 }`;
 
+const excludedRepos = [
+  "RecordReplay/backend",
+  "RecordReplay/admin",
+  "RecordReplay/customer-support",
+];
+
+const URL = true
+  ? "https://hasreplay.graphcdn.app"
+  : "https://api.github.com/graphql";
+
 export default async function handler(req, res) {
   const { repo, org, state, labels } = req.query;
   const repoQuery = repo != "" ? `repo:${org}/${repo}` : "";
-  const labelQuery = labels
-    .split(",")
-    .map((label) => `label:"${label}"`)
-    .join(" ");
+  const labelQuery =
+    labels.length == ""
+      ? ""
+      : labels
+          .split(",")
+          .map((label) => `label:"${label}"`)
+          .join(" ");
+
+  const exludedRepos = excludedRepos.map((repo) => `-repo:${repo}`).join(" ");
+
+  const ghQuery = `app.replay.io/recording ${exludedRepos} ${labelQuery} ${repoQuery} is:${state}`;
+
   const variables = {
-    query: `${labelQuery} ${repoQuery} is:${state}`,
+    query: ghQuery,
   };
 
   const headers = {
@@ -54,7 +72,7 @@ export default async function handler(req, res) {
     Authorization: `bearer ${process.env.GITHUB_API_TOKEN}`,
   };
 
-  const response = await fetch("https://hasreplay.graphcdn.app", {
+  const response = await fetch(URL, {
     method: "POST",
     headers,
     body: JSON.stringify({
@@ -63,6 +81,7 @@ export default async function handler(req, res) {
     }),
   });
   const data = await response.json();
-  const issues = data.data.search.nodes;
+
+  const issues = data.data.search.nodes.filter((issue) => issue.body);
   return res.json(issues);
 }
