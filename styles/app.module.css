@@ -1,0 +1,54 @@
+
+.header {
+  background-color: #161b22;
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 1rem 0rem;
+  font-size: 0.8rem; 
+  max-width: 1250px;
+  width: 85%;
+}
+
+.header .left {
+  display: flex;
+  flex-direction: row;
+}
+
+.header span:hover {
+  cursor: pointer;
+}
+
+.header .left a {
+  padding-left: 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.header a {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #161b22;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.footer a {
+  margin-left: 1rem;
+  font-weight: bold;
+}
+
+.footer .buggy {
+  text-decoration: none;
+  font-size: 1rem;
+}

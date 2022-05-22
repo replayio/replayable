@@ -1,6 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
+  max-width: 1250px;
   width: 85%;
   margin: 2rem auto;
 }
@@ -119,17 +120,3 @@
   margin-right: 0.5rem;
 }
 
-.description {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 1rem 0rem;
-}
-
-.description li {
-  list-style-type: none;
-}
-
-.description a {
-  font-weight: bold;
-}
