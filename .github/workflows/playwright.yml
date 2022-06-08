@@ -15,8 +15,11 @@ jobs:
         run: npm ci
       - name: Install Playwright
         run: npx playwright install --with-deps
-      - name: Run Playwright tests
-        run: npx playwright test
+      - uses: replayio/action-playwright@v0.4.5
+        with:
+          command: npx playwright test
+          issue-number: ${{ inputs.issue-number }}
+          project: firefox
+          apiKey: ${{ secrets.replayWorkspaceApiKey }}
         env:
-          # This might depend on your test-runner/language binding
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}

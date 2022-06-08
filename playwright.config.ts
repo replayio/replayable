@@ -1,4 +1,6 @@
 import { PlaywrightTestConfig, devices } from "@playwright/test";
+const { devices } = require("@replayio/playwright");
+
 import dotenv from "dotenv";
 dotenv.config();
 
@@ -13,10 +15,15 @@ const config: PlaywrightTestConfig = {
   },
 
   projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
+    inCI
+      ? {
+          name: "firefox",
+          use: { ...devices["Replay Firefox"] },
+        }
+      : {
+          name: "chromium",
+          use: { ...devices["Chromium"] },
+        },
   ],
 };
 export default config;
