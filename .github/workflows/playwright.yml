@@ -37,7 +37,7 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        uses: replayio/action-playwright@v0.4.9
+        uses: replayio/action-playwright@v0.4.10
         with:
           project: firefox
           issue-number: ${{ steps.pr-number.outputs.result }}
