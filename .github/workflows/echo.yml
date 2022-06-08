@@ -8,5 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Echo
-        run: echo "yo"
+        run: echo "yooo"
         shell: sh
