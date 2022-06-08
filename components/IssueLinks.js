@@ -16,7 +16,13 @@ export default function IssueLinks({ issue }) {
         </a>
       ))}
       {replays?.map((replay) => (
-        <a href={replay} target="_blank" rel="noreferrer" key={replay}>
+        <a
+          className="replay-link"
+          href={replay}
+          target="_blank"
+          rel="noreferrer"
+          key={replay}
+        >
           <span className={styles.replay}>
             <img src="/replay.svg" alt="" />
             Replay

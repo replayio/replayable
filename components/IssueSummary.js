@@ -3,7 +3,7 @@ import styles from "../styles/Home.module.css";
 function State({ active, count, label, onSelect }) {
   return (
     <span
-      className={styles.headerLabel}
+      className={`view-${label} ${styles.headerLabel}`}
       onClick={() => onSelect()}
       style={
         active
