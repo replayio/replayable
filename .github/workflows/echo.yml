@@ -1,12 +1,10 @@
 name: Echo
-on:
-  pull_request:
-    types: [opened, reopened]
+on: pull_request
 jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
       - name: Echo
-        run: echo "yo"
+        run: echo "yooo"
         shell: sh

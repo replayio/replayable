@@ -2,16 +2,13 @@ import { PlaywrightTestConfig, devices } from "@playwright/test";
 import dotenv from "dotenv";
 dotenv.config();
 
+const inCI = !!process.env.CI;
+
 const config: PlaywrightTestConfig = {
-  // forbidOnly: !!process.env.CI,
-  // retries: process.env.CI ? 2 : 0,
-  // use: {
-  //   trace: "on-first-retry",
-  // },
+  timeout: 10 * 1000,
   use: {
-    headless: false,
     launchOptions: {
-      slowMo: 500,
+      slowMo: inCI ? 0 : 500,
     },
   },
 
