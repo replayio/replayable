@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
 
 test("Navigate to Issue", async ({ page, context }) => {
-  await page.goto("localhost:3000");
+  await page.goto("/");
 
   const [newPage] = await Promise.all([
     context.waitForEvent("page"),
@@ -12,18 +12,18 @@ test("Navigate to Issue", async ({ page, context }) => {
   await newPage.waitForURL(/.*github.com.*/);
 });
 
-// test("Navigate to Replay", async ({ page, context }) => {
-//   await page.goto("localhost:3000");
+test("Navigate to Replay", async ({ page, context }) => {
+  await page.goto("/");
 
-//   const link = await page.locator(".replay-link").first();
-//   console.log(await link.getAttribute("href"));
+  const link = await page.locator(".replay-link").first();
+  console.log(await link.getAttribute("href"));
 
-//   const [newPage] = await Promise.all([
-//     context.waitForEvent("page"),
-//     await page.locator(".replay-link").first().click(),
-//   ]);
+  const [newPage] = await Promise.all([
+    context.waitForEvent("page"),
+    await page.locator(".replay-link").first().click(),
+  ]);
 
-//   await newPage.waitForLoadState();
-//   console.log(await newPage.title());
-//   await newPage.waitForURL(/.*replay\.io.*/);
-// });
+  await newPage.waitForLoadState();
+  console.log(await newPage.title());
+  await newPage.waitForURL(/.*replay\.io.*/);
+});

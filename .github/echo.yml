@@ -1,0 +1,12 @@
+name: Echo
+on:
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo
+        run: echo "yo"
+        shell: sh
