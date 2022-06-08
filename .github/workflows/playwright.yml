@@ -7,19 +7,40 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: debug
+        uses: actions/github-script@v6
+        id: pr-number
         with:
-          node-version: "14.x"
+          result-encoding: json
+          script: |
+            try {
+              const results = await github.rest.search.issuesAndPullRequests({
+                q: context.sha
+              });
+              const prs = [...results.data.items].sort((a, b) => a.score - b.score);
+              if (prs[0]) {
+                return prs[0].number;
+              }
+            } catch (e) {
+              console.error(e);
+            }
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
       - name: Install dependencies
         run: npm ci
-      - name: Install Playwright
-        run: npx playwright install --with-deps
-      - uses: replayio/action-playwright@v0.4.5
+
+      - name: Run Tests
+        uses: replayio/action-playwright@v0.4.9
         with:
-          command: npx playwright test
-          issue-number: ${{ inputs.issue-number }}
           project: firefox
-          apiKey: ${{ secrets.replayWorkspaceApiKey }}
+          issue-number: ${{ steps.pr-number.outputs.result }}
+          apiKey: ${{ secrets.REPLAYWORKSPACEAPIKEY }}
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
