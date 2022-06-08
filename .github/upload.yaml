@@ -1,0 +1,33 @@
+name: Test Upload action
+
+on:
+  workflow_dispatch:
+    inputs:
+      cli-version:
+        description: "CLI Version"
+        default: latest
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        uses: bahmutov/npm-install@v1
+
+      - name: Test
+        run: npx playwright test --project replay-firefox
+        shell: sh
+
+      - name: Test and Upload
+        uses: replayio/action-upload@main
+        with:
+          cli-version: ${{ github.event.inputs.cli-version }}
+          apiKey: ${{ secrets.RECORD_REPLAY_API_KEY }}
