@@ -1,8 +1,13 @@
 import { PlaywrightTestConfig, devices } from "@playwright/test";
+import { devices as replayDevices } from "@replayio/playwright";
+
 import dotenv from "dotenv";
-dotenv.config();
 
 const inCI = !!process.env.CI;
+
+if (!inCI) {
+  dotenv.config();
+}
 
 const config: PlaywrightTestConfig = {
   timeout: 10 * 1000,
@@ -13,10 +18,15 @@ const config: PlaywrightTestConfig = {
   },
 
   projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
+    inCI
+      ? {
+          name: "firefox",
+          use: { ...replayDevices["Replay Firefox"] },
+        }
+      : {
+          name: "chromium",
+          use: { ...devices["Chromium"] },
+        },
   ],
 };
 export default config;
