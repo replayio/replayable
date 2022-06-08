@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@playwright/test": "^1.22.2",
+    "action-playwright": "github:replayio/action-playwright",
     "dotenv": "^16.0.1",
     "next": "12.0.3",
     "react": "17.0.2",
