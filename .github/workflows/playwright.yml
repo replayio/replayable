@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success'
     steps:
-      - name: debug
+      - name: Get PR Number
         uses: actions/github-script@v6
         id: pr-number
         with:
