@@ -4,7 +4,7 @@ import styles from "../styles/Home.module.css";
 import { getLabelFontColor } from "../scripts/utilities";
 import BuggyIssueLinks from "./BuggyIssueLinks";
 
-const showLabels = false;
+const showLabels = true;
 
 export default function IssueRow({
   issue,
@@ -26,7 +26,7 @@ export default function IssueRow({
     : new Date(date).toLocaleDateString();
 
   return (
-    <div className={styles.row}>
+    <div className={`issue-row ${styles.row}`}>
       {/* Left Side Issue Summary */}
       <div className={styles.issue}>
         {/* Avatar */}
@@ -48,13 +48,19 @@ export default function IssueRow({
         <div className={styles.data}>
           {/* Title and Labels */}
           <div>
-            <a href={url} target="_blank" rel="noreferrer">
+            <a
+              className="issue-link"
+              href={url}
+              target="_blank"
+              rel="noreferrer"
+            >
               <span>{title}</span>
             </a>
             {showLabels && (
               <div className={styles.labels}>
                 {labels
                   .filter((label) => label.node.name != "has-replay")
+                  .slice(0, 2)
                   .map((label) => (
                     <Label
                       key={label.node.name}
@@ -112,7 +118,7 @@ function Label({ label, toggleLabel, buggy }) {
 
   return (
     <span
-      className={styles.label}
+      className={`issue-label ${styles.label}`}
       onClick={() => toggleLabel(label.node.name)}
       style={{
         backgroundColor: "#" + label.node.color,
