@@ -25,7 +25,6 @@ export default function Home({ buggy }) {
 
   const { issues, error } = useGithubSearch(filters, buggy);
 
-  console.log(issues);
   // Set the filters from the query string
   useEffect(() => {
     setFilters((filters) => ({
