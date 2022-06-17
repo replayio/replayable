@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Replayable.dev
 
-## Getting Started
+[Replayable](https://replayable.dev) is a collection of Github Issues that include replays.
 
-First, run the development server:
+Replayable is great for finding OSS issues to contribute to. When an issue has a replay, you have everything you need to get started debugging.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Replayable is also great for finding real world issues. If you’re stuck on a React Hooks bug, odds are there is a similar issue that has already been solved.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Closed Issues** are great examples of how replays were used to solve real-world bugs.
+- **Open Issues** are great for diving into replays and debugging yourself.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+The site also has a “buggy” mode that can be enabled by clicking the ✅  icon in the lower right corner. Record the site or **[use the replay here](https://app.replay.io/recording/replayable-buggy-mode--f53b73cc-37bd-48b5-bb8d-db19a93e99be)** to practice debugging these issues!
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+No installation is required to view replays.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## Replay.io
 
-## Learn More
+[Replay](https://replay.io) lets you record a browser session to produce a shareable replay for collaborative debugging. The replay isn’t just a video — everything from the browser is recorded so you can inspect everything including HTML elements, JavaScript execution, network requests, user events, and even the state of your React components at each and every moment in time.
 
-To learn more about Next.js, take a look at the following resources:
+Replay is free for individuals and OSS projects. Check out:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [replay.io/get-started](https://replay.io/get-started)
+- [replay.io/oss](https://replay.io/oss)
+- [replay.io/examples](https://replay.io/examples)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Contributing
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This is a Next.js app deployed to Vercel. We welcome contributions. Join us at [replay.io/discord](https://replay.io/discord) to chat with the team and ask questions!
