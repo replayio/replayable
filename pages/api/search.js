@@ -39,9 +39,9 @@ query($query: String!) {
 }`;
 
 const excludedRepos = [
-  "RecordReplay/backend",
-  "RecordReplay/admin",
-  "RecordReplay/customer-support",
+  "replayio/backend",
+  "replayio/admin",
+  "replayio/customer-support",
 ];
 
 const URL = true
