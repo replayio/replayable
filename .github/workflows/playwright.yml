@@ -1,6 +1,13 @@
 name: Playwright Tests
 on: 
   deployment_status:  
+  workflow_dispatch:
+    inputs:
+      project:
+        description: Playwright project to use
+      doNotRecord:
+        type: boolean
+        description: Do not record
 jobs:
   test:
     timeout-minutes: 60
@@ -39,8 +46,9 @@ jobs:
       - name: Run Tests
         uses: replayio/action-playwright@v0.4.10
         with:
-          project: firefox
+          project: ${{ github.event.inputs.project || 'firefox' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
           apiKey: ${{ secrets.REPLAYWORKSPACEAPIKEY }}
         env:
-          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url }}
+          RECORD_REPLAY_DONT_RECORD: ${{ github.event.inputs.doNotRecord && '1'}}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.gotbugs.io/' }}
