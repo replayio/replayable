@@ -10,10 +10,13 @@ if (!inCI) {
 }
 
 const config: PlaywrightTestConfig = {
-  timeout: 0 * 1000,
+  timeout: !inCI ? 30 * 1000 : 10 * 1000,
   workers: !inCI ? 1 : undefined,
   use: {
     baseURL: !inCI ? "http://localhost:3000" : undefined,
+    launchOptions: {
+      slowMo: inCI ? 0 : 500,
+    },
   },
 
   projects: [
