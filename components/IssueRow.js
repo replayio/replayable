@@ -76,7 +76,7 @@ export default function IssueRow({
           {/* Secondary summary row */}
           <div className={styles.muted}>
             {!filteredByRepo && (
-              <a
+              <a className={`repo-link`}
                 href="#"
                 onClick={() =>
                   toggleRepo(

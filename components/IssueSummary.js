@@ -28,7 +28,7 @@ export default function IssueSummary({
     <>
       {filters.repo && (
         <h2>
-          <a href="#" onClick={() => toggleRepo("", "")}>
+          <a href="#" onClick={() => toggleRepo("", "")} className={`filter-repo`}>
             {filters.org}/{filters.repo}
           </a>
         </h2>
@@ -50,7 +50,7 @@ export default function IssueSummary({
         </div>
         <div>
           {labels.map((label) => (
-            <span className={styles.headerLabel} key={label}>
+            <span className={`filter-label ${styles.headerLabel}`} key={label}>
               {label}
             </span>
           ))}
