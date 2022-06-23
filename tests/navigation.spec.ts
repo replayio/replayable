@@ -5,7 +5,7 @@ test("Navigate to Issue", async ({ page, context }) => {
 
   const [newPage] = await Promise.all([
     context.waitForEvent("page"),
-    page.locator("a.issue-link").first().click(),
+    page.locator("a.issue-link").first().click({ force: true }),
   ]);
 
   await newPage.waitForLoadState();
@@ -15,15 +15,11 @@ test("Navigate to Issue", async ({ page, context }) => {
 test("Navigate to Replay", async ({ page, context }) => {
   await page.goto("/");
 
-  const link = await page.locator(".replay-link").first();
-  console.log(await link.getAttribute("href"));
-
   const [newPage] = await Promise.all([
     context.waitForEvent("page"),
-    await page.locator(".replay-link").first().click(),
+    await page.locator(".replay-link").first().click({ force: true }),
   ]);
 
   await newPage.waitForLoadState();
-  console.log(await newPage.title());
   await newPage.waitForURL(/.*replay\.io.*/);
 });

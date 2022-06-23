@@ -10,21 +10,20 @@ if (!inCI) {
 }
 
 const config: PlaywrightTestConfig = {
-  timeout: 10 * 1000,
+  timeout: 0 * 1000,
+  workers: !inCI ? 1 : undefined,
   use: {
-    launchOptions: {
-      slowMo: inCI ? 0 : 500,
-    },
+    baseURL: !inCI ? "http://localhost:3000" : undefined,
   },
 
   projects: [
     {
       name: "replay-firefox",
-      use: { ...replayDevices["Replay Firefox"] as any },
+      use: { ...(replayDevices["Replay Firefox"] as any) },
     },
     {
       name: "replay-chromium",
-      use: { ...replayDevices["Replay Chromium"] as any },
+      use: { ...(replayDevices["Replay Chromium"] as any) },
     },
     {
       name: "firefox",
