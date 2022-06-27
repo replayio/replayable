@@ -46,7 +46,7 @@ jobs:
       # https://playwright.dev/docs/ci#github-actions
       # TODO: only install Playwright browsers if project requires
       - name: Install Playwright browsers
-      - run: npx playwright install --with-deps
+        run: npx playwright install --with-deps
 
       - name: Run Tests
         uses: replayio/action-playwright@v0.4.10
