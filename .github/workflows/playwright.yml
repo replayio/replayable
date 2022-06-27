@@ -12,7 +12,7 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    if: github.event.deployment_status.state == 'success'
+    if: ${{ github.event.deployment_status.state == 'success' || github.event.name == 'workflow_dispatch' }}
     steps:
       - name: Get PR Number
         uses: actions/github-script@v6
