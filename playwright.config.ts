@@ -11,6 +11,7 @@ if (!inCI) {
 
 const config: PlaywrightTestConfig = {
   timeout: !inCI ? 30 * 1000 : 10 * 1000,
+  workers: !inCI ? 1 : undefined,
   use: {
     baseURL: !inCI ? "http://localhost:3000" : undefined,
     launchOptions: {
