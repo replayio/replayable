@@ -51,9 +51,9 @@ jobs:
       - name: Run Tests
         uses: replayio/action-playwright@v0.4.10
         with:
-          project: ${{ github.event.inputs.project || 'firefox' }}
+          project: ${{ github.event.inputs.project || 'replay-firefox' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
           apiKey: ${{ secrets.REPLAYWORKSPACEAPIKEY }}
         env:
           RECORD_REPLAY_DONT_RECORD: ${{ github.event.inputs.doNotRecord && '1'}}
-          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.gotbugs.io/' }}
+          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
