@@ -49,7 +49,7 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Tests
-        uses: replayio/action-playwright@v0.4.12
+        uses: replayio/action-playwright@v0.4.10
         with:
           project: ${{ github.event.inputs.project || 'replay-firefox' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
