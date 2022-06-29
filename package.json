@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "@playwright/test": "1.19",
+    "@replayio/cypress": "^0.2.1",
     "@replayio/playwright": "^0.2.11",
+    "cypress": "^10.2.0",
     "dotenv": "^16.0.1",
     "next": "12.0.3",
     "react": "17.0.2",
