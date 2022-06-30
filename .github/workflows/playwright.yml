@@ -32,28 +32,28 @@ jobs:
               console.error(e);
             }
 
-      - name: Checkout
-        uses: actions/checkout@v3
+      # - name: Checkout
+      #   uses: actions/checkout@v3
 
-      - name: Setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
+      # - name: Setup node
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 16
 
-      - name: Install dependencies
-        run: npm ci
+      # - name: Install dependencies
+      #   run: npm ci
 
-      # https://playwright.dev/docs/ci#github-actions
-      # TODO: only install Playwright browsers if project requires
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      # # https://playwright.dev/docs/ci#github-actions
+      # # TODO: only install Playwright browsers if project requires
+      # - name: Install Playwright browsers
+      #   run: npx playwright install --with-deps
 
-      - name: Run Tests
-        uses: replayio/action-playwright@v0.4.13
-        with:
-          project: ${{ github.event.inputs.project || 'replay-firefox' }}
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          apiKey: ${{ secrets.REPLAYWORKSPACEAPIKEY }}
-        env:
-          RECORD_REPLAY_DONT_RECORD: ${{ github.event.inputs.doNotRecord && '1'}}
-          PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
+      # - name: Run Tests
+      #   uses: replayio/action-playwright@v0.4.13
+      #   with:
+      #     project: ${{ github.event.inputs.project || 'replay-firefox' }}
+      #     issue-number: ${{ steps.pr-number.outputs.result }}
+      #     apiKey: ${{ secrets.REPLAYWORKSPACEAPIKEY }}
+      #   env:
+      #     RECORD_REPLAY_DONT_RECORD: ${{ github.event.inputs.doNotRecord && '1'}}
+      #     PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}

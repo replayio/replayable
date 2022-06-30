@@ -40,8 +40,8 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Tests
-        uses: replayio/action-cypress@v0.1.0
+      - name: Run Cypress Tests
+        uses: replayio/action-cypress@v0.1.1
         with:
           browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
