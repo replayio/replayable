@@ -1,5 +1,6 @@
 name: Cypress Tests
 on:
+  deployment_status:
   workflow_dispatch:
     inputs:
       browser:
