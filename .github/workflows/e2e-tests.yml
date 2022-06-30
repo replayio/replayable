@@ -1,13 +1,10 @@
-name: Playwright Tests
+name: Cypress Tests
 on:
   deployment_status:
   workflow_dispatch:
     inputs:
-      project:
-        description: Playwright project to use
-      doNotRecord:
-        type: boolean
-        description: Do not record
+      browser:
+        description: Cypress browser to use
 jobs:
   test:
     timeout-minutes: 60
@@ -43,6 +40,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Run Cypress Tests
+        uses: replayio/action-cypress@v0.1.1
+        with:
+          browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
+          issue-number: ${{ steps.pr-number.outputs.result }}
+          apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
+        env:
+          CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
       # https://playwright.dev/docs/ci#github-actions
       # TODO: only install Playwright browsers if project requires
       - name: Install Playwright browsers
