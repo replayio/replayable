@@ -1,13 +1,13 @@
-import { defineConfig } from "cypress";
-import cypressReplay from "@replayio/cypress";
+const { defineConfig } = require("cypress");
+const cypressReplay = require("@replayio/cypress");
 
-export default defineConfig({
+module.exports = defineConfig({
   e2e: {
     baseUrl: "http://localhost:3000",
     screenshotOnRunFailure: false,
     video: false,
     setupNodeEvents(on, config) {
-      cypressReplay(on, config);
+      cypressReplay.default(on, config);
       return config;
     },
   },
