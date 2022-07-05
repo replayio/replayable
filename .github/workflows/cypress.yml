@@ -45,5 +45,6 @@ jobs:
           browser: ${{ github.event.inputs.browser || 'Replay Chromium' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
           apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
+          public: true
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
