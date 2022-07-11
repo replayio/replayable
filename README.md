@@ -26,3 +26,25 @@ Replay is free for individuals and OSS projects. Check out:
 ## Contributing
 
 This is a Next.js app deployed to Vercel. We welcome contributions. Join us at [replay.io/discord](https://replay.io/discord) to chat with the team and ask questions!
+
+## Automated Testing
+
+This projected uses `@replayio/cypress` and `replayio/action-cypress` to record and upload replays of Cypress tests.
+
+Read more about recording tests in your own project in the [Replay documentation here](https://docs.replay.io/docs/recording-automated-tests-5bf7d91b65cd46deab1867b07bd12bdf).
+
+### Recording in CI
+
+Tests will run automatically on each deployment (including those for pull requests) using `action-cypress`](https://github.com/replayio/action-cypress). The workflow file is [`cypress.yml`](https://github.com/replayio/replayable/blob/main/.github/workflows/cypress.yml).
+
+The workflow can be dispatched manually to select different browsers. 
+
+### Recording locally
+
+To record Cypress tests locally, `npm install` in the project directory, then run:
+
+```bash
+RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser "Replay Firefox"
+```
+
+Use the [`replayio/replay` CLI](https://github.com/replayio/replay-cli/tree/main/packages/replay) to upload and view replays recorded locally. [Documentation here](https://docs.replay.io/docs/recording-tests-9f771761436440e6b672701e6107d2b1#47cea4d90c9f43b08d9ad5a743c49f62).
