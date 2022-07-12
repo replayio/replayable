@@ -30,9 +30,10 @@ This is a Next.js app deployed to Vercel. We welcome contributions. Join us at [
 To develop locally, run:
 
 `npm install`
+
 `npm run start`
 
-The app will run on http://localhost:3000.
+The app will run on `http://localhost:3000`.
 
 ## Automated Testing
 
