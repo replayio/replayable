@@ -52,7 +52,7 @@ The workflow can be dispatched manually to select different browsers.
 To record Cypress tests locally, start the app with `npm run start`, then run:
 
 ```bash
-RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser "Replay Firefox"
+npm run cypress:record
 ```
 
 Use the [`replayio/replay` CLI](https://github.com/replayio/replay-cli/tree/main/packages/replay) to upload and view replays recorded locally. [Documentation here](https://docs.replay.io/docs/recording-tests-9f771761436440e6b672701e6107d2b1#47cea4d90c9f43b08d9ad5a743c49f62).

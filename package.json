@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser 'Replay Firefox'"
   },
   "dependencies": {
     "@replayio/cypress": "^0.2.3",
