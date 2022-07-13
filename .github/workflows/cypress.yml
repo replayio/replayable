@@ -48,6 +48,7 @@ jobs:
           public: true
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
+          RECORD_REPLAY_VERBOSE: 1
 
       - name: List Recordings
         if: always()
