@@ -42,7 +42,7 @@ jobs:
       - name: Run Tests
         uses: replayio/action-cypress@v0.1.4
         with:
-          browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
+          browser: ${{ github.event.inputs.browser || 'Replay Chromium' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
           apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           public: true
