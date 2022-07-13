@@ -8,7 +8,7 @@ on:
 jobs:
   test:
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     if: github.event.deployment_status.state == 'success' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Get PR Number
@@ -42,7 +42,7 @@ jobs:
       - name: Run Tests
         uses: replayio/action-cypress@v0.1.4
         with:
-          browser: ${{ github.event.inputs.browser || 'Replay Chromium' }}
+          browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
           apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           public: true
