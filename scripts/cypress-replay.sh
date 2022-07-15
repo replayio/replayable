@@ -1,5 +1,5 @@
-# exit when any command fails
-set -e
+# exit when any command fails, print commands that are running
+set -ex
 
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
