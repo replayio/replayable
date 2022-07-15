@@ -15,7 +15,7 @@ export RECORD_ALL_CONTENT=1
 export RECORD_REPLAY_API_SERVER=${RECORD_REPLAY_API_SERVER:-https://api.replay.io}
 
 # Start Dev Server or configure BASE_URL and run your tests
-npx cypress run --config-file cypress.config.js --e2e --browser "Replay Firefox" || true
+npx cypress run --config-file cypress.config.js --e2e --browser ~/.replay/playwright/firefox || true
 
 # Merge in source control-related metadata. The environment variables used are
 # the required data elements:
