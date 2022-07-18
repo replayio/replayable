@@ -38,7 +38,7 @@ export RECORD_REPLAY_API_SERVER=${RECORD_REPLAY_API_SERVER:-https://api.replay.i
 CWD=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
 
 # Install dependencies for this script
-npm i --prefix $CWD @replayio/replay@0.0.0-experimental-57709165 node-fetch@2.x
+npm i --prefix $CWD @replayio/replay@0.0.0-experimental-747d6cb4 node-fetch@2.x
 
 # Clean up any prior recodings before starting
 npx @replayio/replay rm-all
