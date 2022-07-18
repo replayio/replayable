@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@replayio/replay": "^0.6.1",
+    "@replayio/replay": "^0.0.0-experimental-57709165",
     "node-fetch": "^2.6.7"
   }
 }

@@ -11,17 +11,8 @@ set -e
 # The command to run to run your tests (including starting servers if necessary)
 export TEST_COMMAND=${TEST_COMMAND:-'npm run test:e2e -- -- --browser "Replay Firefox"'}
 
-# The user that triggered the test run (defaulting to the author of the commit)
-export BUILD_USER_ID=${BUILD_USER_ID:-$(git log -1 --pretty='format:%aN')}
-
-# The current branch name
-export GIT_LOCAL_BRANCH=${GIT_LOCAL_BRANCH:-$(git branch --points-at HEAD --format='%(refname:short)')}
-
 # The current commit SHA
-export GIT_COMMIT=${GIT_COMMIT:-$(git log -1 --pretty="format:%H")}
-
-# The current commit message
-export GIT_COMMIT_MESSAGE=${GIT_COMMIT_MESSAGE:-$(git log -1 --pretty="format:%s")}
+export RECORD_REPLAY_METADATA_SOURCE_COMMIT_ID=${RECORD_REPLAY_METADATA_SOURCE_COMMIT_ID:-$(git log -1 --pretty="format:%H")}
 
 ##############################################################################
 # The build script with the following steps:                                 #
@@ -44,14 +35,18 @@ export RECORD_REPLAY_METADATA_FILE=$(mktemp)
 export RECORD_ALL_CONTENT=1
 export RECORD_REPLAY_API_SERVER=${RECORD_REPLAY_API_SERVER:-https://api.replay.io}
 
+CWD=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd );
+
 # Install dependencies for this script
-npm i --prefix $( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) @replayio/replay@latest node-fetch@2.x
+npm i --prefix $CWD @replayio/replay@0.0.0-experimental-57709165 node-fetch@2.x
 
 # Clean up any prior recodings before starting
 npx @replayio/replay rm-all
 
 # Start Dev Server or configure BASE_URL and run your tests
 eval ${TEST_COMMAND} || true
+
+cd $CWD
 
 # Merge in source control-related metadata.
 node -e "
@@ -65,25 +60,7 @@ node -e "
   const { source } = require('@replayio/replay/metadata');
   const mergeId = undefined;                  // PR number
   console.log('Generating source control metadata');
-  const metadata = source.init({
-    branch: process.env.GIT_LOCAL_BRANCH,     // branch name
-    provider: undefined,                      // change or remove if not using GitHub
-    repository: undefined,                    // full name of the repo (e.g. replayio/my-new-app)
-    trigger: {
-      user: process.env.BUILD_USER_ID,        // user that triggered the build (e.g. the commit author or user triggering the job)
-      name: 'pull_request',                   // type of event that triggered the test run (e.g. pull_request, workflow_dispatch)
-      workflow: undefined,                    // id fo the workflow/pipeline run
-      url: undefined                          // URL of the workflow/pipeline that triggered the run
-    },
-    commit: {
-      id: process.env.GIT_COMMIT,             // SHA of the head of the branch
-      title: process.env.GIT_COMMIT_MESSAGE,  // first line of the commit msg
-    },
-    merge: mergeId ? {
-      id: mergeId,
-      title: undefined,                       // PR title
-    } : undefined,
-  });
+  const metadata = source.init();
 
   console.log('Finding replays from test run', process.env.RECORD_REPLAY_TEST_RUN_ID)
   const recordings = cli.listAllRecordings()
@@ -98,7 +75,7 @@ node -e "
   recordings.forEach(r => cli.addLocalRecordingMetadata(r.id, metadata));"
 
 # Upload the replays
-npx -y @replayio/replay@latest upload-all
+npx -y @replayio/replay upload-all
 
 # Generate a link to view the test run
 node -e "
