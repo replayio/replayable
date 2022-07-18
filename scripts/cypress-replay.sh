@@ -1,12 +1,43 @@
 # exit when any command fails
 set -e
 
+##############################################################################
+# Metadata environment variables that can be overwritten by the build system #
+#                                                                            #
+# * NOTE: RECORD_REPLAY_API_KEY should already be set in the environment     #
+#                                                                            #
+##############################################################################
+
+# The command to run to run your tests (including starting servers if necessary)
+export TEST_COMMAND=${TEST_COMMAND:-npm run test:e2e -- -- --browser "Replay Firefox"}
+
+# The user that triggered the test run (defaulting to the author of the commit)
+export BUILD_USER_ID=${BUILD_USER_ID:-$(git log -1 --pretty='format:%aN')}
+
+# The current branch name
+export GIT_LOCAL_BRANCH=${GIT_LOCAL_BRANCH:-$(git branch --points-at HEAD --format='%(refname:short)')}
+
+# The current commit SHA
+export GIT_COMMIT=${GIT_COMMIT:-$(git log -1 --pretty="format:%H")}
+
+# The current commit message
+export GIT_COMMIT_MESSAGE=${GIT_COMMIT_MESSAGE:-$(git log -1 --pretty="format:%s")}
+
+
+##############################################################################
+# The build script with the following steps:                                 #
+#                                                                            #
+# * Run $TEST_COMMAND                                                        #
+# * Attach metadata to recorded tests                                        #
+# * Upload all tests                                                         #
+# * Generate a link to the test run on app.replay.io                         #
+#                                                                            #
+##############################################################################
+
 # keep track of the last executed command
 trap 'last_command=$current_command; current_command=$BASH_COMMAND' DEBUG
 # echo an error message before exiting
 trap 'EXIT_CODE=$? CMD=${last_command}; test $EXIT_CODE -ne 0 && echo "\n\n\"${CMD}\" command filed with exit code $EXIT_CODE."' EXIT
-
-# RECORD_REPLAY_API_KEY should already be set in the environment
 
 # Set up Replay-specific environment variables
 export RECORD_REPLAY_TEST_RUN_ID=$(uuidgen | tr A-Z a-z)
@@ -15,14 +46,9 @@ export RECORD_ALL_CONTENT=1
 export RECORD_REPLAY_API_SERVER=${RECORD_REPLAY_API_SERVER:-https://api.replay.io}
 
 # Start Dev Server or configure BASE_URL and run your tests
-npm run test:e2e -- -- --browser "Replay Firefox" || true
+$TEST_COMMAND || true
 
-# Merge in source control-related metadata. The environment variables used are
-# the required data elements:
-#  * GIT_LOCAL_BRANCH
-#  * BUILD_USER_ID
-#  * GIT_COMMIT
-#  * GIT_COMMIT_MESSAGE
+# Merge in source control-related metadata.
 npm i @replayio/replay@latest node-fetch@2.x
 node -e "
   console.log('\n');
