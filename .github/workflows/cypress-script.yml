@@ -42,6 +42,7 @@ jobs:
       - name: Run Tests
         run: ./scripts/cypress-replay.sh
         env:
+          RECORD_REPLAY_API_KEY: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           TEST_COMMAND: npm run cypress:run -- --browser "Replay Firefox"
           RECORD_REPLAY_METADATA_SOURCE_MERGE_ID: ${{ steps.pr-number.outputs.result }}
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
