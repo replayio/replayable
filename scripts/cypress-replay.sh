@@ -9,7 +9,7 @@ set -e
 ##############################################################################
 
 # The command to run to run your tests (including starting servers if necessary)
-export TEST_COMMAND=${TEST_COMMAND:-npm run test:e2e -- -- --browser "Replay Firefox"}
+export TEST_COMMAND=${TEST_COMMAND:-'npm run test:e2e -- -- --browser "Replay Firefox"'}
 
 # The user that triggered the test run (defaulting to the author of the commit)
 export BUILD_USER_ID=${BUILD_USER_ID:-$(git log -1 --pretty='format:%aN')}
@@ -22,7 +22,6 @@ export GIT_COMMIT=${GIT_COMMIT:-$(git log -1 --pretty="format:%H")}
 
 # The current commit message
 export GIT_COMMIT_MESSAGE=${GIT_COMMIT_MESSAGE:-$(git log -1 --pretty="format:%s")}
-
 
 ##############################################################################
 # The build script with the following steps:                                 #
@@ -46,10 +45,10 @@ export RECORD_ALL_CONTENT=1
 export RECORD_REPLAY_API_SERVER=${RECORD_REPLAY_API_SERVER:-https://api.replay.io}
 
 # Start Dev Server or configure BASE_URL and run your tests
-$TEST_COMMAND || true
+eval ${TEST_COMMAND} || true
 
 # Merge in source control-related metadata.
-npm i @replayio/replay@latest node-fetch@2.x
+npm i --prefix $( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) @replayio/replay@latest node-fetch@2.x
 node -e "
   console.log('\n');
   if (!process.env.RECORD_REPLAY_TEST_RUN_ID) {

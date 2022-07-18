@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@replayio/replay": "^0.6.1",
+    "node-fetch": "^2.6.7"
+  }
+}
