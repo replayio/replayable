@@ -58,9 +58,6 @@ node -e "
 
   const cli = require('@replayio/replay');
   const { source } = require('@replayio/replay/metadata');
-  const mergeId = undefined;                  // PR number
-  console.log('Generating source control metadata');
-  const metadata = source.init();
 
   console.log('Finding replays from test run', process.env.RECORD_REPLAY_TEST_RUN_ID)
   const recordings = cli.listAllRecordings()
@@ -70,6 +67,9 @@ node -e "
     console.error('ERROR: No replays found');
     process.exit(1);
   }
+
+  console.log('Generating source control metadata');
+  const metadata = source.init();
 
   console.log('Updating metadata for', recordings.length, 'test run replays');
   recordings.forEach(r => cli.addLocalRecordingMetadata(r.id, metadata));"
