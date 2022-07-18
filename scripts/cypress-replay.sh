@@ -44,11 +44,16 @@ export RECORD_REPLAY_METADATA_FILE=$(mktemp)
 export RECORD_ALL_CONTENT=1
 export RECORD_REPLAY_API_SERVER=${RECORD_REPLAY_API_SERVER:-https://api.replay.io}
 
+# Install dependencies for this script
+npm i --prefix $( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) @replayio/replay@latest node-fetch@2.x
+
+# Clean up any prior recodings before starting
+npx @replayio/replay rm-all
+
 # Start Dev Server or configure BASE_URL and run your tests
 eval ${TEST_COMMAND} || true
 
 # Merge in source control-related metadata.
-npm i --prefix $( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) @replayio/replay@latest node-fetch@2.x
 node -e "
   console.log('\n');
   if (!process.env.RECORD_REPLAY_TEST_RUN_ID) {
