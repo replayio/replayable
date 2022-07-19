@@ -48,3 +48,7 @@ jobs:
           public: true
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
+
+      - run: npx @replayio/replay ls --all
+        if: ${{ always() }}
+        shell: bash
