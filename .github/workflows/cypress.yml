@@ -40,7 +40,7 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        uses: replayio/action-cypress@v0.1.6
+        uses: replayio/action-cypress@main
         with:
           command: RECORD_REPLAY_VERBOSE=1 DEBUG=cypress:* npx cypress run
           browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
