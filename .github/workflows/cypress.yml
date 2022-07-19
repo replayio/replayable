@@ -42,6 +42,7 @@ jobs:
       - name: Run Tests
         uses: replayio/action-cypress@v0.1.6
         with:
+          command: RECORD_REPLAY_VERBOSE=1 DEBUG=cypress:* npx cypress run
           browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
           issue-number: ${{ steps.pr-number.outputs.result }}
           apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
