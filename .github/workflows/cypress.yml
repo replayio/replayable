@@ -50,8 +50,3 @@ jobs:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
           RECORD_REPLAY_VERBOSE: 1
           DEBUG: cypress:*
-
-      - name: List Recordings
-        if: always()
-        run: npx @replayio/replay@latest ls -a
-        shell: bash
