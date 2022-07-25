@@ -40,11 +40,10 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        uses: replayio/action-cypress@v0.1.6
+        uses: replayio/action-cypress@v0.2.2
         with:
           browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
+          api-key: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           public: true
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
