@@ -22,7 +22,7 @@ jobs:
           command: "cat package.json"
       - run:
           name: "Run Cypress Tests"
-          command: "npm run test:e2e -- -- --browser \"Replay Firefox\" || true"
+          command: "npx cypress run --browser \"Replay Firefox\" || true"
       - run:
           name: "Update Replay metadata"
           command: "npx -y -p @replayio/replay@v0.9.0 replay metadata --init --keys source --warn"
