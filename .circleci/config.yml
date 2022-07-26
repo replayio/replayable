@@ -15,6 +15,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: "Install Dependencies"
+          command: "npm ci"
+      - run:
           name: "Run Cypress Tests"
           command: "npm run test:e2e -- -- --browser \"Replay Firefox\" || true"
       - run:
