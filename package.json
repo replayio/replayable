@@ -6,19 +6,27 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser 'Replay Firefox'"
+    "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npm run test:e2e -- -- --browser 'Replay Firefox'",
+    "cypress:run": "cypress run",
+    "test:e2e:wait": "wait-on http://localhost:3000",
+    "test:e2e:run": "run-s test:e2e:wait \"cypress:run -- {@}\"",
+    "test:e2e": "run-p -r dev \"test:e2e:run -- -- {@}\""
   },
   "dependencies": {
-    "@replayio/cypress": "^0.2.11",
+    "@replayio/cypress": "^0.2.6",
+    "@replayio/replay": "^0.6.1",
     "cypress": "^10.2.0",
     "dotenv": "^16.0.1",
     "next": "12.0.3",
+    "node-fetch": "^2.6.7",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "swr": "^1.3.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
-    "eslint-config-next": "12.0.3"
+    "eslint-config-next": "12.0.3",
+    "npm-run-all": "^4.1.5",
+    "wait-on": "^6.0.1"
   }
 }
