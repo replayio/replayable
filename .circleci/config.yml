@@ -18,14 +18,17 @@ jobs:
           name: "Install Dependencies"
           command: "npm ci"
       - run:
+          name: "debug"
+          command: "cat package.json"
+      - run:
           name: "Run Cypress Tests"
           command: "npm run test:e2e -- -- --browser \"Replay Firefox\" || true"
       - run:
           name: "Update Replay metadata"
-          command: "npx -y -p @replayio/replay@latest replay metadata --init --keys source --warn"
+          command: "npx -y -p @replayio/replay@v0.9.0 replay metadata --init --keys source --warn"
       - run:
           name: "Upload Replays"
-          command: "npx -y -p @replayio/replay@latest replay upload-all"
+          command: "npx -y -p @replayio/replay@v0.9.0 replay upload-all"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
