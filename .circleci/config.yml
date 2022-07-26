@@ -18,6 +18,9 @@ jobs:
       - run:
           name: "Run Cypress Tests"
           command: 'npm run test:e2e -- -- --browser "Replay Firefox"'
+          environment:
+            RECORD_ALL_CONTENT: 1
+            RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata.log
       - run:
           name: "Install Replay CLI"
           command: "npm i -g @replayio/replay@latest"
