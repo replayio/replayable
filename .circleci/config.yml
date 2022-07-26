@@ -33,5 +33,7 @@ workflows:
   cypress-test-workflow:
     jobs:
       - cypress/run:
+          name: cypress
           browser: "Replay Firefox"
-      - replay-upload
+      - replay-upload:
+          requires: [cypress]
