@@ -9,7 +9,7 @@
     "cypress:record": "RECORD_ALL_CONTENT=1 RECORD_REPLAY_METADATA_FILE=$(mktemp) npx cypress run --browser 'Replay Firefox'"
   },
   "dependencies": {
-    "@replayio/cypress": "^0.2.3",
+    "@replayio/cypress": "^0.2.11",
     "cypress": "^10.2.0",
     "dotenv": "^16.0.1",
     "next": "12.0.3",
