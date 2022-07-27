@@ -24,11 +24,15 @@ jobs:
       - run:
           name: "Install Replay CLI"
           command: "npm i -g @replayio/replay@latest"
+      # - run:
+      #     name: "Set up Replay Source Control Metadata"
+      #     command: |
+      #       echo RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE=\"$(git log --format=%s -n 1)" >> /tmp/replay-env
       - run:
           name: "Update Replay metadata"
-          command: "replay metadata --init --keys source --warn"
-          environment:
-            RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE: $(git log --format=%s -n 1)
+          command: |
+            export RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE=\"$(git log --format=%s -n 1)"
+            replay metadata --init --keys source --warn
       - run:
           name: "List"
           command: "replay ls"
