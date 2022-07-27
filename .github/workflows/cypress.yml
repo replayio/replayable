@@ -29,7 +29,7 @@ jobs:
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
           RECORD_ALL_CONTENT: 1
-          RECORD_REPLAY_METADATAFILE: /tmp/replay-metadata
+          RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata
 
       - name: Upload to Replay
         if: ${{ always() }}
