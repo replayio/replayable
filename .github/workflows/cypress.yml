@@ -11,23 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.deployment_status.state == 'success' || github.event_name == 'workflow_dispatch'
     steps:
-      - name: Get PR Number
-        uses: actions/github-script@v6
-        id: pr-number
-        with:
-          result-encoding: json
-          script: |
-            try {
-              const results = await github.rest.search.issuesAndPullRequests({
-                q: context.sha
-              });
-              const prs = [...results.data.items].sort((a, b) => a.score - b.score);
-              if (prs[0]) {
-                return prs[0].number;
-              }
-            } catch (e) {
-              console.error(e);
-            }
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -40,11 +23,19 @@ jobs:
         run: npm ci
 
       - name: Run Tests
-        uses: replayio/action-cypress@v0.1.6
+        uses: cypress-io/github-action@v4.1.1
         with:
-          browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          apiKey: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
-          public: true
+          browser: "Replay Firefox"
         env:
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
+          RECORD_ALL_CONTENT: 1
+          RECORD_REPLAY_METADATAFILE: /tmp/replay-metadata
+
+      - name: Upload to Replay
+        run: |
+          npm i -g @replayio/replay@latest
+          export RECORD_REPLAY_METADATA_SOURCE_MERGE_ID=${{ steps.pr-number.outputs.result }};
+          replay metadata --init --keys source --warn
+          replay upload-all
+        env:
+          RECORD_REPLAY_API_KEY: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
