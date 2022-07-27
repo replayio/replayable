@@ -27,6 +27,8 @@ jobs:
       - run:
           name: "Update Replay metadata"
           command: "replay metadata --init --keys source --warn"
+          environment:
+            RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE: $(git log --format=%s -n 1)
       - run:
           name: "List"
           command: "replay ls"
