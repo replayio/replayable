@@ -32,6 +32,7 @@ jobs:
           RECORD_REPLAY_METADATAFILE: /tmp/replay-metadata
 
       - name: Upload to Replay
+        if: ${{ always() }}
         run: |
           npm i -g @replayio/replay@latest
           export RECORD_REPLAY_METADATA_SOURCE_MERGE_ID=${{ steps.pr-number.outputs.result }};
