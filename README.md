@@ -45,7 +45,7 @@ Read more about recording tests in your own project in the [Replay documentation
 
 Tests will run automatically on each deployment (including those for pull requests) using `action-cypress`](https://github.com/replayio/action-cypress). The workflow file is [`cypress.yml`](https://github.com/replayio/replayable/blob/main/.github/workflows/cypress.yml).
 
-The workflow can be dispatched manually to select different browsers. 
+The workflow can also be dispatched manually to select different browsers. 
 
 ### Recording locally
 
