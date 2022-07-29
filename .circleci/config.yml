@@ -22,24 +22,15 @@ jobs:
             RECORD_ALL_CONTENT: 1
             RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata.log
       - run:
-          name: "Install Replay CLI"
-          command: "npm i -g @replayio/replay@latest"
-      # - run:
-      #     name: "Set up Replay Source Control Metadata"
-      #     command: |
-      #       echo RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE=\"$(git log --format=%s -n 1)" >> /tmp/replay-env
-      - run:
-          name: "Update Replay metadata"
+          name: "Upload to Replay"
+          when: always
           command: |
+            npm i -g @replayio/replay@latest
             export RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE="$(curl -H "Accept: application/vnd.github+json" https://api.github.com/repos/$CIRCLE_PROJECT_REPONAME/pulls/78 | jq -r .title)"
             export RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE="$(git log --format=%s -n 1)"
             replay metadata --init --keys source --warn
-      - run:
-          name: "List"
-          command: "replay ls"
-      - run:
-          name: "Upload Replays"
-          command: "replay upload-all --api-key rwk_fjrH1rSfRSDEKq3kn1Fi962VUSI2XMpv9wAIw9QTsUo"
+            replay ls
+            replay upload-all --api-key rwk_fjrH1rSfRSDEKq3kn1Fi962VUSI2XMpv9wAIw9QTsUo
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
