@@ -1,0 +1,40 @@
+version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
+jobs:
+  replay-upload:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/node:18.4.0-browsers
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout
+      - run:
+          name: "Install Dependencies"
+          command: "npm ci"
+      - run:
+          name: "Run Cypress Tests"
+          command: 'npm run test:e2e -- -- --browser "Replay Firefox"'
+          environment:
+            RECORD_ALL_CONTENT: 1
+            RECORD_REPLAY_METADATA_FILE: /tmp/replay-metadata.log
+      - run:
+          name: "Upload to Replay"
+          when: always
+          command: |
+            npm i -g @replayio/replay@latest
+            export RECORD_REPLAY_METADATA_SOURCE_COMMIT_TITLE="$(git log --format=%s -n 1)"
+            replay metadata --init --keys source --warn
+            replay ls
+            replay upload-all --api-key $RECORD_REPLAY_API_KEY
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
+workflows:
+  cypress-test-workflow:
+    jobs:
+      - replay-upload:
+          context: replayable
