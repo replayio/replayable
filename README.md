@@ -31,7 +31,7 @@ To develop locally, run:
 
 `npm install`
 
-`npm run start`
+`npm run dev`
 
 The app will run on `http://localhost:3000`.
 
