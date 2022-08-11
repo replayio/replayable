@@ -52,6 +52,6 @@ jobs:
         uses: replayio/action-playwright@v0.5.3
         with:
           project: ${{ github.event.inputs.project || 'replay-firefox' }}
-          apiKey: ${{ secrets.REPLAY_PLAYWRIGHT_API_KEY }}
+          api-key: ${{ secrets.REPLAY_PLAYWRIGHT_API_KEY }}
         env:
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
