@@ -49,11 +49,9 @@ jobs:
         run: npx playwright install --with-deps
 
       - name: Run Tests
-        uses: replayio/action-playwright@v0.4.14
+        uses: replayio/action-playwright@v0.5.3
         with:
           project: ${{ github.event.inputs.project || 'replay-firefox' }}
-          issue-number: ${{ steps.pr-number.outputs.result }}
-          apiKey: ${{ secrets.REPLAYWORKSPACEAPIKEY }}
+          apiKey: ${{ secrets.REPLAY_PLAYWRIGHT_API_KEY }}
         env:
-          RECORD_REPLAY_DONT_RECORD: ${{ github.event.inputs.doNotRecord && '1'}}
           PLAYWRIGHT_TEST_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
