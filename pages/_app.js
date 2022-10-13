@@ -11,7 +11,7 @@ function Header() {
         <div className={styles.left}>
           <img alt="Replay" src="replay.svg" width={20} height={20} />
           <Link href="/">
-            <a>Replayable</a>
+            <a className="home-link">Replayable</a>
           </Link>
         </div>
         <div>

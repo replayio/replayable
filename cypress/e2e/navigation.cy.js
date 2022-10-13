@@ -1,5 +1,12 @@
 describe("navigation", () => {
   beforeEach("it visits page", () => {
+    cy.intercept("GET", "/api/search*", (req) => {
+      if (req.url.includes("repo")) {
+        req.alias = "searchRepo";
+      } else {
+        req.alias = "searchAll";
+      }
+    });
     cy.visit("/");
   });
   it("navigates to About", () => {
@@ -45,5 +52,12 @@ describe("navigation", () => {
       .first()
       .should("have.attr", "href")
       .and("include", "replay.io");
+  });
+  it("should clear filters when navigating to the home page", () => {
+    cy.visit("/?org=replayio&repo=devtools");
+    cy.wait("@searchRepo");
+    cy.get(".home-link").first().click();
+    cy.wait("@searchAll");
+    cy.get(".filter-repo").should("not.exist");
   });
 });
