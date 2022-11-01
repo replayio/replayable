@@ -5,6 +5,10 @@ on:
     inputs:
       browser:
         description: Cypress browser to use
+
+env:
+  RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20221101-437cdab850ff-dae524f48153.tar.xz
+
 jobs:
   test:
     timeout-minutes: 60
