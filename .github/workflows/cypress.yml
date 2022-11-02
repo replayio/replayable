@@ -8,6 +8,7 @@ on:
 
 env:
   RECORD_REPLAY_CHROMIUM_DOWNLOAD_FILE: linux-chromium-20221101-437cdab850ff-dae524f48153.tar.xz
+  DEBUG: replay:cli:install
 
 jobs:
   test:
@@ -40,13 +41,22 @@ jobs:
         with:
           node-version: 16
 
+      - name: list
+        run: ls /home/runner/.replay/playwright || exit 0
+
+      - name: Install Replay browsers
+        run: npx @replayio/playwright install
+
+      - name: list
+        run: ls /home/runner/.replay/playwright || exit 0
+
       - name: Install dependencies
         run: npm ci
 
       - name: Run Tests
         uses: replayio/action-cypress@v0.2.2
         with:
-          browser: ${{ github.event.inputs.browser || 'Replay Firefox' }}
+          browser: ${{ github.event.inputs.browser || 'Replay Chromium' }}
           api-key: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           public: true
         env:
