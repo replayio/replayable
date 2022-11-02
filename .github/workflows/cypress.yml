@@ -50,6 +50,7 @@ jobs:
           api-key: ${{ secrets.CYPRESS_REPLAY_API_KEY }}
           public: true
         env:
+          RECORD_REPLAY_VERBOSE: 1
           DEBUG: cypress:launcher*
           RECORD_REPLAY_METADATA_SOURCE_MERGE_ID: ${{ steps.pr-number.outputs.result }}
           CYPRESS_BASE_URL: ${{ github.event.deployment_status.target_url || 'https://www.replayable.dev/' }}
