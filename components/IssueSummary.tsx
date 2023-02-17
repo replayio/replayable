@@ -28,7 +28,11 @@ export default function IssueSummary({
     <>
       {filters.repo && (
         <h2>
-          <a href="#" onClick={() => toggleRepo("", "")} className={`filter-repo`}>
+          <a
+            href="#"
+            onClick={() => toggleRepo("", "")}
+            className={`filter-repo`}
+          >
             {filters.org}/{filters.repo}
           </a>
         </h2>
