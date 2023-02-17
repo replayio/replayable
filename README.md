@@ -27,7 +27,7 @@ Replay is free for individuals and OSS projects. Check out:
 
 This is a Next.js app deployed to Vercel. We welcome contributions. Join us at [replay.io/discord](https://replay.io/discord) to chat with the team and ask questions!
 
-To develop locally, first you'll need a [GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Then, you'll need to copy `.env.tpl` into `.env` and fill in the values.
+To develop locally, first you'll need a [GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with `repo` scopes. Then, you'll need to copy `.env.tpl` into `.env` and fill in the values.
 
 Once this is done, run:
 
