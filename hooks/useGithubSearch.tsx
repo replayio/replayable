@@ -1,6 +1,5 @@
 import useSWR from "swr";
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { fetcher } from "../util/fetcher";
 
 export function filtersToQuery(filters) {
   return Object.keys(filters)

@@ -5,19 +5,13 @@ import styles from "../styles/Home.module.css";
 import IssueRow from "../components/IssueRow";
 import IssueSummary from "../components/IssueSummary";
 import { useGithubSearch } from "../hooks/useGithubSearch";
+import { GetStaticProps } from "next";
+import { fetchFromGitHub } from "../util/fetchFromGitHub";
 
-export const fetcher = (...args) => fetch(...args).then((res) => res.json());
-
-export function filtersToQuery(filters) {
-  return Object.keys(filters)
-    .map((key) => key + "=" + encodeURIComponent(filters[key] || ""))
-    .join("&");
-}
-
-export default function Home({ buggy }) {
+export default function Home({ buggy, initialIssues }) {
   const { query } = useRouter();
   const [filters, setFilters] = useState({
-    labels: [],
+    labels: [] as string[],
     org: "",
     repo: "",
     state: "OPEN",
@@ -29,8 +23,8 @@ export default function Home({ buggy }) {
   useEffect(() => {
     setFilters((filters) => ({
       ...filters,
-      repo: query.repo || filters.repo,
-      org: query.org || filters.org,
+      repo: (query.repo as string) || filters.repo,
+      org: (query.org as string) || filters.org,
     }));
   }, [query]);
 
@@ -56,17 +50,16 @@ export default function Home({ buggy }) {
   };
 
   if (error) return <div>failed to load</div>;
-  if (!issues) return <div></div>;
 
   return (
     <div className={styles.container}>
       <IssueSummary
-        issues={issues}
+        issues={initialIssues || issues}
         filters={filters}
         toggleRepo={toggleRepo}
         toggleIssueState={toggleIssueState}
       />
-      {issues.map((issue) => (
+      {(initialIssues || issues).map((issue) => (
         <IssueRow
           key={issue.number}
           toggleLabel={toggleLabel}
@@ -79,3 +72,13 @@ export default function Home({ buggy }) {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  const issues = await fetchFromGitHub();
+  return {
+    props: {
+      initialIssues: issues,
+    },
+    revalidate: true,
+  };
+};
