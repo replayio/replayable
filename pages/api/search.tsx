@@ -44,9 +44,7 @@ const excludedRepos = [
   "replayio/customer-support",
 ];
 
-const URL = true
-  ? "https://hasreplay.graphcdn.app"
-  : "https://api.github.com/graphql";
+const URL = "https://api.github.com/graphql";
 
 export default async function handler(req, res) {
   const { repo, org, state, labels } = req.query;
