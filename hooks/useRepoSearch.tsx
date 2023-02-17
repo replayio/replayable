@@ -1,6 +1,6 @@
 import useSWR from "swr";
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+import { fetcher } from "../util/fetcher";
+import { filtersToQuery } from "../util/filtersToQuery";
 
 export function useRepoSearch(filters) {
   const { data: resp, error } = useSWR(
