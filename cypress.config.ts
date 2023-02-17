@@ -1,5 +1,5 @@
-const { defineConfig } = require("cypress");
-const cypressReplay = require("@replayio/cypress");
+import { defineConfig } from "cypress";
+import cypressReplay from "@replayio/cypress";
 
 module.exports = defineConfig({
   e2e: {
@@ -7,7 +7,7 @@ module.exports = defineConfig({
     screenshotOnRunFailure: false,
     video: false,
     setupNodeEvents(on, config) {
-      cypressReplay.default(on, config);
+      cypressReplay(on, config);
       return config;
     },
   },

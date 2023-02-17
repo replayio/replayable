@@ -10,9 +10,7 @@ function Header() {
       <div className={styles.container}>
         <div className={styles.left}>
           <img alt="Replay" src="replay.svg" width={20} height={20} />
-          <Link href="/">
-            <a>Replayable</a>
-          </Link>
+          <Link href="/">Replayable</Link>
         </div>
         <div>
           <a href="https://replay.io/oss" target="_blank" rel="noreferrer">
