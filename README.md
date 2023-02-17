@@ -27,11 +27,12 @@ Replay is free for individuals and OSS projects. Check out:
 
 This is a Next.js app deployed to Vercel. We welcome contributions. Join us at [replay.io/discord](https://replay.io/discord) to chat with the team and ask questions!
 
-To develop locally, run:
+To develop locally, first you'll need a [GitHub access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). Then, you'll need to copy `.env.tpl` into `.env` and fill in the values.
 
-`npm install`
+Once this is done, run:
 
-`npm run dev`
+- `npm install` to install dependencies, and then
+- `npm run dev` to start the development server.
 
 The app will run on `http://localhost:3000`.
 
@@ -45,7 +46,7 @@ Read more about recording tests in your own project in the [Replay documentation
 
 Tests will run automatically on each deployment (including those for pull requests) using `action-cypress`](https://github.com/replayio/action-cypress). The workflow file is [`cypress.yml`](https://github.com/replayio/replayable/blob/main/.github/workflows/cypress.yml).
 
-The workflow can also be dispatched manually to select different browsers. 
+The workflow can also be dispatched manually to select different browsers.
 
 ### Recording locally
 
