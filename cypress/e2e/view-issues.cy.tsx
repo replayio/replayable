@@ -1,3 +1,5 @@
+import "cypress";
+
 describe("view issues", () => {
   beforeEach("it visits the page and intercepts search route", () => {
     cy.intercept("GET", "/api/search*", (req) => {

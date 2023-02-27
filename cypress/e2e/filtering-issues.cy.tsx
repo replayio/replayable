@@ -1,3 +1,5 @@
+import "cypress";
+
 describe("filtering issues", () => {
   beforeEach("it visits the page", () => {
     cy.visit("/");

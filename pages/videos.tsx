@@ -1,6 +1,7 @@
-function Loom({ id }) {
+function Loom({ id, title }: { id: string; title?: string }) {
   return (
     <div
+      title={title}
       style={{
         position: "relative",
         paddingBottom: "60%",
@@ -10,6 +11,7 @@ function Loom({ id }) {
     >
       <iframe
         src={`https://www.loom.com/embed/${id}`}
+        // @ts-ignore
         webkitallowfullscreen
         mozallowfullscreen
         style={{

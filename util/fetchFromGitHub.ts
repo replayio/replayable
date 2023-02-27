@@ -71,6 +71,8 @@ export const fetchFromGitHub = async () => {
   });
   const data = await response.json();
 
+  console.log(data);
+
   const issues = data.data.search.nodes.filter((issue) => issue.body);
   return issues;
 };

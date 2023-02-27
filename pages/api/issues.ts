@@ -1,3 +1,5 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 const query = `
 query getIssues(
   $labels: [String!], 
@@ -35,10 +37,16 @@ query getIssues(
   }
 }`;
 
-export default async function handler(req, res) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const arrayOfLabels = Array.isArray(req.query.labels)
+    ? req.query.labels
+    : req.query.labels.split(",");
   const variables = {
     ...req.query,
-    labels: req.query.labels?.split(",") || "",
+    labels: arrayOfLabels,
   };
 
   const headers = {

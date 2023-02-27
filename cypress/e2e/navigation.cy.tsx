@@ -1,3 +1,5 @@
+import "cypress";
+
 describe("navigation", () => {
   beforeEach("it visits page", () => {
     cy.visit("/");
