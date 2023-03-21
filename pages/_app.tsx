@@ -3,6 +3,7 @@ import Head from "next/head";
 import styles from "../styles/app.module.css";
 import { useState } from "react";
 import Link from "next/link";
+import SearchBox from "../components/SearchBox";
 
 function Header() {
   return (
@@ -57,6 +58,7 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favico.svg" />
       </Head>
       <Header />
+      <SearchBox />
       <Component {...pageProps} buggy={buggy} />
       <Footer buggy={buggy} toggleBuggy={toggleBuggy} />
     </>
